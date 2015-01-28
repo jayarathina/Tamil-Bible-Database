@@ -2,7 +2,7 @@
 
 **PROJECT STATUS: NOT YET REDY FOR USE**
 
-Tamil Bible database of the Catholic Bible in MySql and a PHP app. It follows [scrollmapper/bible_databases](https://github.com/scrollmapper/bible_databases) number formating for verse numbering. But lists deuterocanon as a continuity of old testament. The order of the books are persevered as in the print edition.
+Tamil Bible database of the Catholic Bible in MySql and a PHP API. It follows [scrollmapper/bible_database](https://github.com/scrollmapper/bible_databases) number formatting for verse numbering. But lists deuterocanon as a continuity of old testament. The order of the books are persevered as in the print edition.
 
 ---
 

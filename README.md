@@ -10,9 +10,9 @@ Plan for this project is to:
 
 * Rectify spelling mistakes
 * Format verses
-** Poems
-** Paragraphs
-** Correct verse numberings
+ * Poems
+ * Paragraphs
+ * Correct verse numberings
 * Sample API in php on how to use the database
 * Usage documentation on standerds used for this project
 

@@ -2,7 +2,7 @@
 
 **PROJECT STATUS: NOT YET REDY FOR USE**
 
-Tamil Bible database of the Catholic Bible in MySql and a PHP app. It follows [scrollmapper/bible_databases](https://github.com/scrollmapper/bible_databases) number formating for verse numbering. But lists dutro cannon as a continiuity of old testament. The order of the books are presevered as in the print edition.
+Tamil Bible database of the Catholic Bible in MySql and a PHP app. It follows [scrollmapper/bible_databases](https://github.com/scrollmapper/bible_databases) number formating for verse numbering. But lists deuterocanon as a continuity of old testament. The order of the books are persevered as in the print edition.
 
 ---
 
@@ -12,8 +12,8 @@ Plan for this project is to:
 * Format verses
  * Poems
  * Paragraphs
- * Correct verse numberings
-* Sample API in php on how to use the database
-* Usage documentation on standerds used for this project
+ * Verse numberings
+* Create a sample API in PHP on how to use the database
+* Usage documentation on standards used for this project
 
 ---

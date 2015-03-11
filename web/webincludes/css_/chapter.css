@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+.chapter h1, h2, h3 {
+	text-align: center;
+	color: #393939;
+}
+
+.para {
+	text-indent: 15%; /* Was previously 2.5em */
+	text-align: justify;
+}
+
+.redLetter {
+	color: FireBrick;
+}
+
+.verse {
+	color: inherit;
+	line-height: 160%;
+}
+
+.verseNum {
+	color: #808080;
+	vertical-align: top;
+	line-height: 16px;
+	font-size: 0.7em;
+}
+
+.indent {
+	margin-left: 2em;
+	margin-left: 8%;
+	display: block;
+	text-indent: 0;
+}
+
+.poem {
+	text-indent: -2em;
+	display: block;
+	margin-left: 6em;
+	text-align: left;
+}
+
+.poem>.verseNum {
+	position: absolute;
+	margin-left: -1em;
+	line-height: inherit;
+}
+
+@media (min-width: 0px) and (max-width: 520px) {
+	.indent {
+		margin-left: 8%;
+	}
+
+	.poem {
+		margin-left: 2em;
+	}
+	
+	.poem>.verseNum {
+		position: absolute;
+		margin-left: 2em;
+		line-height: 16px;
+	}
+  
+}
+
+/*
+div.chapterNavBx>a {
+	margin: 0 15px 0 10px;
+	width: 14px;
+	text-align: center;
+	display: inline-block;
+}
+
+div.chapterNavBx {
+	width: 900px;
+	margin: 0px auto;
+}
+
+span.verse>.poem {
+	margin: 0px auto;
+	width: 550px;
+}
+
+.indent>.verseNum {
+	color: red;
+	position: absolute;
+	margin-left: -3em;
+}
+
+.verse:hover span {
+	background-color: #EEEEEE;
+}
+
+.verse span:hover {
+	background-color: #EEEEEE;
+}
+
+.verse:hover {
+	background-color: #EEEEEE;
+}
+*/

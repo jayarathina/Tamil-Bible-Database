@@ -1,4 +1,4 @@
-Tamil Ecumenical Bible in Unicode.
+### Tamil Ecumenical Bible (TNBCLC) in Unicode
 
 * `web` contains the [home page](http://jayarathina.github.io/Tamil-Bible-Database/web/index.html) with bible HTML dump.
 * `MySQL` contains the mysql tables

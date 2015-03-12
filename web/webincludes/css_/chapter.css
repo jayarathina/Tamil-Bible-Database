@@ -2,7 +2,6 @@
 
 .chapter h1, h2, h3 {
 	text-align: center;
-	color: #393939;
 }
 
 .para {
@@ -10,13 +9,8 @@
 	text-align: justify;
 }
 
-.redLetter {
-	color: FireBrick;
-}
-
-.verse {
-	color: inherit;
-	line-height: 160%;
+.verse{
+	display: inline;
 }
 
 .verseNum {
@@ -26,44 +20,86 @@
 	font-size: 0.7em;
 }
 
+.redLetter {
+	color: FireBrick;
+	display: inline;
+}
+
 .indent {
-	margin-left: 2em;
-	margin-left: 8%;
+	margin-left: 4em; /* 2em; */
+	display:block;
+	text-indent: 0em;
+}
+
+.outdent {
 	display: block;
 	text-indent: 0;
 }
 
-.poem {
-	text-indent: -2em;
-	display: block;
-	margin-left: 6em;
-	text-align: left;
+.poem>p{
+	margin:0px;
+	text-indent: 0em;
+	margin-left: 4em;
 }
 
-.poem>.verseNum {
+.poem1>p:nth-child(even),
+.poem2>p:nth-child(odd){
+	margin-left: 6em;
+}
+
+.poem1>p>.verseNum {
 	position: absolute;
-	margin-left: -1em;
+	margin-left: -4em;
 	line-height: inherit;
+}
+
+.poem2>p>.verseNum {
+	position: absolute;
+	margin-left: -7em;
+	line-height: inherit;
+}
+
+.crossref{
+	margin-right: 25px;
+	white-space: nowrap;
+}
+
+.footnote{
+	display:block;
+	text-indent: 0px;
 }
 
 @media (min-width: 0px) and (max-width: 520px) {
 	.indent {
 		margin-left: 8%;
 	}
-
-	.poem {
+	
+	.poem>p {
+		margin-left: 0em;
+	}
+	
+	.poem1>p:nth-child(even),
+	.poem2>p:nth-child(odd){
 		margin-left: 2em;
 	}
 	
-	.poem>.verseNum {
-		position: absolute;
-		margin-left: 2em;
+	.poem1>p>.verseNum {
+		margin-left: -1.5em;
 		line-height: 16px;
 	}
-  
+	
+	.poem2>p>.verseNum {
+		margin-left: -4.2em;
+		line-height: 16px;
+	}
+
+	.crossref{
+		white-space: normal;
+	}
+
 }
 
-/*
+/* For verse highlight
 div.chapterNavBx>a {
 	margin: 0 15px 0 10px;
 	width: 14px;

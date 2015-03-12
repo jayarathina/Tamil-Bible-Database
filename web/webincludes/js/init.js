@@ -10,7 +10,6 @@ function initSettings(templateFolder) {
 			var res = scriptsRef.split(templateFolder); 
 			$pre = res[0] + templateFolder;
 		}else{
-			//This should never happen;
 			return;
 		}
 	}
@@ -80,3 +79,7 @@ function initSettings(templateFolder) {
 		}
 	});
 }
+
+$(window).load(function() {
+	$(".loader").hide();
+});

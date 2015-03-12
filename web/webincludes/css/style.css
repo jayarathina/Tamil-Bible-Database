@@ -1,8 +1,17 @@
 @charset "UTF-8";
 @import url(font-awesome.min.css);
 @import url("http://fonts.googleapis.com/css?family=Lato:300,400");
-@import url(http://fonts.googleapis.com/earlyaccess/notosanstamil.css);
-@import url(http://fonts.googleapis.com/earlyaccess/notosanstamilui.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstamil.css); /*For title */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstamilui.css); /*For text */
+
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+}
 
 /* Basic */
 body, input, select, textarea {

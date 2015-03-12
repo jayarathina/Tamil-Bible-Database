@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<title>Documentation: Website Usage</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="திருவிவிலியம் பொது மொழிபெயர்ப்பை இணையத்தில் உரை திருத்த ஒரு கூட்டு முயற்சி. Tamil Bible MySQL Database in Unicode" />
+<meta name="keywords" content="திருவிவிலியம், தமிழ் விவிலியம், திருவிவிலியம் பொது மொழிபெயர்பு, கத்தோலிக்க விவிலியம், Tamil Bible, Tamil Catholic Bible, TNBCLC Bible" />
+
+<script src="webincludes/js/jquery.min.js"></script>
+<script src="webincludes/js/skel.min.js"></script>
+<script src="webincludes/js/skel-layers.min.js"></script>
+<script src="webincludes/js/init.js"></script>
+
+<noscript>
+	<link rel="stylesheet" href="webincludes/css/skel.css" />
+	<link rel="stylesheet" href="webincludes/css/style.css" />
+	<link rel="stylesheet" href="webincludes/css/style-xlarge.css" />
+</noscript>
+
+<script type="text/javascript">
+initSettings('webincludes');
+</script>		<link rel="stylesheet" type="text/css" href="webincludes/css_/doc.css">
+</head>
+<body>
+		<script>document.write('<div class="loader" style="background:url(http://localhost/e/bible/webincludes/images/loader.gif) 50% 50% no-repeat rgb(255,255,255);"></div>');</script>
+
+<!-- Header -->
+<header id="header">
+	<h1>திருவிவிலியம்</h1>
+	<nav id="nav">
+		<ul>
+			<li><a href="index.html">முகப்பு</a></li>
+			<li><a href="toc.html">அட்டவணை</a></li>
+			<li><a href="doc1.html">Help</a></li>
+		</ul>
+	</nav>
+</header>		<!-- Main -->
+	<section id="main" class="wrapper">
+		<div class="container">
+			<hr />
+<h3>Documentation</h3>
+<ul>
+	<li><a href='doc1.html'>Part 1 - Definition of Terms</a></li>
+	<li><a href='doc2.html'>Part 2 - Mark-up Syntax</a></li>
+	<li><a href='doc3.html'>Part 3 - Web App Usage Intro</a></li>
+	<li><a href='doc4.html'>Part 4 - Punctuation</a></li>
+	<li><a href='doc5.html'>Part 5 - Cheat sheet</a></li>
+</ul>
+<hr />
+			<header class="major">
+				<h4>Part 4 - Punctuation</h4>
+				<p>This section contains the specification of punctuation standards and an easier method to input them</p>
+			</header>
+			<hr />
+			<p>The importance of Punctuation warrants a separate section dedicated solely for it.</p>
+			<hr />
+			<header>
+				<h3>Types of punctuation to note:</h3>
+			</header>
+
+			<p>The following are the types of punctuation to be corrected or checked when you are editing.</p>
+
+			<h3>Quotation Marks</h3>
+
+			<h2 class='disp'>“ ” ‘ ’</h2>
+
+			<p>Please note that the above listing does not include following ordinary quotes that you enter in your keyboard:</p>
+			<h2 class='disp'>" " ' '</h2>
+
+			<p>The position of double quotes (“ ”), play an important function in coloring Christ's words in red. Hence please be careful in editing chapters of the Gospel and Acts. Misplaced quotes would mess up the entire coloring scheme.</p>
+			<blockquote>There is one exception to this rule, within Christ's words, when Christ is quoting another person (inside a parable for example,) irrespective of how they are printed, those quotes should be ordinary double quotes only.</blockquote>
+
+			<p>
+				As of now, Gospel and Acts have red lettering in them. I have completed red letter coloring for all of those verses that need them. I verified them three times. But I still could have missed something. So if you find any mistake in the red coloring <a href='toc.html'>here in this site</a> please do let me know.
+			</p>
+
+			<em>Red lettering cannot be previewed while coding in the web app.</em>
+
+
+			<h3>Dashes</h3>
+
+			<h2 class='disp'>- – —</h2>
+
+			These three dashes are hyphen (-), en dash (–), em dash (—); I cannot find any consistency in usage of these dashes in the printed version of the bible. For time being we will use hyphen for nouns (names of places and people with two parts in them) and em dash only when the printed bible uses it. en dash is suppose to be used in cross reference but currently we are not following that standard.
+
+			<h3>Others</h3>
+			<h2 class='disp'>; : .</h2>
+
+			These are other ordinary punctuation symbols to be noted.
+
+			<hr />
+			<header>
+				<h3>Using Mark-up editor to input these symbols</h3>
+			</header>
+
+
+			<img src="webincludes/images/edit1.jpg" alt="" />
+			<p>The first button in the editor called Expand Abbreviation button can be used to input the above symbols easily. These are the generic aberrations supported now. The list of abbreviation and their respective expansion can be found below: If you need any more to be added, please do let me know.
+			
+			
+			<div class="table-wrapper">
+				<table class="alt">
+					<thead>
+						<tr>
+							<th>Abbreviation</th>
+							<th>Expansion</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>s' or 's</td>
+							<td><h2 class='disp'>‘</h2></td>
+							<td>S followed by a single quote or vice versa will be replaced by <u>S</u>tart single quote
+							</td>
+						</tr>
+						<tr>
+							<td>e' or 'e</td>
+							<td><h2 class='disp'>’</h2></td>
+							<td>E followed by a single quote or vice versa will be replaced by <u>E</u>nd single quote
+							</td>
+						</tr>
+						<tr>
+							<td>s" or "s</td>
+							<td><h2 class='disp'>“</h2></td>
+							<td>S followed by a double quote or vice versa will be replaced by <u>S</u>tart double quote
+							</td>
+						</tr>
+						<tr>
+							<td>e" or "e</td>
+							<td><h2 class='disp'>”</h2></td>
+							<td>E followed by a double quote or vice versa will be replaced by <u>E</u>nd double quote
+							</td>
+						</tr>
+						<tr>
+							<td>-n-</td>
+							<td><h2 class='disp'>–</h2></td>
+							<td>N dash</td>
+						</tr>
+						<tr>
+							<td>-m-</td>
+							<td><h2 class='disp'>—</h2></td>
+							<td>M dash</td>
+						</tr>
+						<tr>
+							<td>saa</td>
+							<td>Same as above</td>
+							<td>For coupled verses</td>
+						</tr>
+						<tr>
+							<td>+</td>
+							<td><h2 class='disp'>†</h2></td>
+							<td>Dagger symbol for footnotes</td>
+						</tr>
+						<tr>
+							<td>++</td>
+							<td><h2 class='disp'>‡</h2></td>
+							<td>Double dagger symbol for footnotes</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</section>
+			<!-- Footer -->
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<section class="4u 6u(medium) 12u$(small)">
+				<h3>Partners</h3>
+				<p></p>
+				<ul class="alt">
+				
+				<li>Currently No one... :( But you can be the first. <a href="http://web.madharasan.com/contact" target="_blank">Drop me a line..</a> :)</a></li>
+				</ul>
+			</section>
+			<section class="4u 6u$(medium) 12u$(small)">
+				<h3>Inspired By</h3>
+				<p>The following were the source of inspiration for this project:</p>
+				<ul class="alt">
+					
+					<li><a href="https://www.youtube.com/watch?v=tu4t9FKn9M4">Why Bible Typography Matters?</a> &ndash; Mark L. Ward, Jr</li>
+					<li><a href="http://www.bibledesignblog.com/">Bible Design Blog</a> &ndash; J. Mark Bertrand</li>
+					<li><a href="http://www.bibliotheca.co/">BIBLIOTHECA</a> &ndash; Adam Lewis Greene</li>
+					
+				</ul>
+			</section>
+			<section class="4u$ 12u$(medium) 12u$(small)">
+				<h3>Connect with Us</h3>
+				<ul class="icons">
+				<li><a href="https://facebook.com/Thiruviviliam" class="icon rounded fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
+				<li><a href="https://github.com/jayarathina/Tamil-Bible-Database" class="icon rounded fa-github" target="_blank"><span class="label" >Github</span></a></li>
+				</ul>
+				<h3>Author</h3>
+				<ul class="icons">
+					<li><a href="http://madharasan.com/" class="icon rounded fa-user" target="_blank"><span class="label">WebPage</span></a></li>
+					<li><a href="https://facebook.com/jayarathina" class="icon rounded fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
+					<li><a href="http://web.madharasan.com/contact" class="icon rounded fa-envelope-o" target="_blank"><span class="label">Contact</span></a></li>
+				</ul>
+				<img src="webincludes/images/publicdomain.png" height='50px' align="bottom" />
+			</section>
+		</div>
+		<ul class="copyright">
+			<li>
+				<a href="#" class="icon fa-thumbs-up"><span class="label">Copyfree</span></a>
+				No rights reserved.
+			</li>
+			<li>
+				<a href='terms.html'>Terms and Conditions</a>
+			</li>		</ul>
+	</div>
+	
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10337712; 
+var sc_invisible=1; 
+var sc_security="9cf0800b"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="free web stats"
+href="http://statcounter.com/free-web-stats/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/10337712/0/9cf0800b/1/"
+alt="free web stats"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+</footer>	</body>
+</html>

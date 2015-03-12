@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<title>Documentation: Definition of Terms</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="திருவிவிலியம் பொது மொழிபெயர்ப்பை இணையத்தில் உரை திருத்த ஒரு கூட்டு முயற்சி. Tamil Bible MySQL Database in Unicode" />
+<meta name="keywords" content="திருவிவிலியம், தமிழ் விவிலியம், திருவிவிலியம் பொது மொழிபெயர்பு, கத்தோலிக்க விவிலியம், Tamil Bible, Tamil Catholic Bible, TNBCLC Bible" />
+
+<script src="webincludes/js/jquery.min.js"></script>
+<script src="webincludes/js/skel.min.js"></script>
+<script src="webincludes/js/skel-layers.min.js"></script>
+<script src="webincludes/js/init.js"></script>
+
+<noscript>
+	<link rel="stylesheet" href="webincludes/css/skel.css" />
+	<link rel="stylesheet" href="webincludes/css/style.css" />
+	<link rel="stylesheet" href="webincludes/css/style-xlarge.css" />
+</noscript>
+
+<script type="text/javascript">
+initSettings('webincludes');
+</script>		<link rel="stylesheet" type="text/css" href="webincludes/css_/doc.css">
+</head>
+<body>
+		<script>document.write('<div class="loader" style="background:url(http://localhost/e/bible/webincludes/images/loader.gif) 50% 50% no-repeat rgb(255,255,255);"></div>');</script>
+
+<!-- Header -->
+<header id="header">
+	<h1>திருவிவிலியம்</h1>
+	<nav id="nav">
+		<ul>
+			<li><a href="index.html">முகப்பு</a></li>
+			<li><a href="toc.html">அட்டவணை</a></li>
+			<li><a href="doc1.html">Help</a></li>
+		</ul>
+	</nav>
+</header>		<!-- Main -->
+	<section id="main" class="wrapper">
+		<div class="container">
+		
+		<hr />
+<h3>Documentation</h3>
+<ul>
+	<li><a href='doc1.html'>Part 1 - Definition of Terms</a></li>
+	<li><a href='doc2.html'>Part 2 - Mark-up Syntax</a></li>
+	<li><a href='doc3.html'>Part 3 - Web App Usage Intro</a></li>
+	<li><a href='doc4.html'>Part 4 - Punctuation</a></li>
+	<li><a href='doc5.html'>Part 5 - Cheat sheet</a></li>
+</ul>
+<hr />
+
+			<header class="major">
+				<h4>Part 1 - Definition of Terms</h4>
+				<p>
+					The following is the definition of terms used in this project.<br /> Most of these are commonly known to all but some are unique to this project.
+				</p>
+			</header>
+			<hr />
+			<header>
+				<h3>Verse</h3>
+				<p>Denotes a bible verse. There are some exceptions to the standard verse format:</p>
+			</header>
+
+			<h4>1. Coupled Verse</h4>
+
+			<p>These are two or more verses which are coupled together as they cannot be semantically separated into different verses for grammatical reasons. These are represented usually with hyphenated verse numbers. (Until now I have come across one exception to this rule, i.e, Roman 1:1,7 where verses 1 and 7 are couples into one verse)</p>
+
+			<h5>Example for Coupled Verse: மத்தேயு - 13</h5>
+
+			<pre>
+				<code>
+<span style="background-color: yellow;">31-32</span> இயேசு அவர்களுக்கு எடுத்துரைத்த வேறு ஓர் உவமை:
+“ஒருவர் கடுகு விதையை* எடுத்துத் தம் வயலில் விதைத்தார்.
+அவ்விதை எல்லா விதைகளையும்விடச் சிறியது. ஆனாலும்,
+அது வளரும்போது மற்றெல்லாச் செடிகளையும் விடப் பெரியதாகும்.
+வானத்துப் பறவைகள் அதன் கிளைகளில் வந்து தங்கும் அளவுக்குப்
+பெரிய மரமாகும். விண்ணரசு இக்கடுகு விதைக்கு ஒப்பாகும்.
+</code>
+			</pre>
+			<h4>2. Sub verses</h4>
+			<p>These are verses that are part of a single large verse. Usually denoted by English or Tamil alphabets within square brackets like: [a], [b] ... or as superscripts like ᵃ, ᵇ and so on. We will use only english alphabets. That makes it uniform and easier for database retrival.</p>
+			<h5>Example for Sub Verse: 1 கொரிந்தியர் - 12:31</h5>
+
+			<pre>
+				<code>
+[a]எனவே நீங்கள் மேலான அருள் கொடையையே
+ஆர்வமாய் நாடுங்கள். [b]எல்லாவற்றையும்விடச்
+சிறந்த நெறி ஒன்றை நான் உங்களுக்கு எடுத்துக் காட்டுகிறேன்.
+</code>
+			</pre>
+			<hr />
+			<header>
+				<h3>Header</h3>
+				<p>
+					Section headers found in the bible. Note that these headers can appear even
+					<code>
+						<b><i>within a single verse</i></b>
+					</code>
+					. (This point is note worthy as it will come handy when we are editing the bible verses cf. தொடக்க நூல் 2:4)
+				</p>
+			</header>
+			<pre>
+				<code>
+4 இவையே விண்ணுலக, மண்ணுலகப் படைப்பின் தோற்ற முறைமையாம்.
+                ==ஆண் - பெண் படைப்பு==
+4 ஆண்டவராகிய கடவுள் மண்ணுலகையும், விண்ணுலகையும் உருவாக்கிய பொழுது, ....
+</code>
+			</pre>
+
+			<hr />
+
+			<header>
+				<h3>Foot notes and Cross references</h3>
+			</header>
+
+			<p>Both are found at the bottom of a page in the printed bible. A `Cross reference` contains reference (verse numbers) to similar or related verses (parallel verses). But a `Foot note` contains explanation of some sort regarding the verse in question.</p>
+
+
+			<hr />
+			<header>
+				<h3>Paras and Para Breaks</h3>
+			</header>
+
+			<p>
+				`Para breaks` separate multiple verses for easy reading. The `para` occurring after a para break will have its first line indented. Unlike a poem, lines in a para will be <a href='https://en.wikipedia.org/wiki/Typographic_alignment#Justified'>justified</a>.
+			</p>
+			<ul>
+				<li>`Outdent` - There are some paras whose first line is not indented, such para's first verse is called outdent verse. These will occur after a poem or a canticle.</li>
+				<li>`Indent` - There are quotes and quotations that occurs within a para. These are called Indent. Note that such Indents are justified too.</li>
+			</ul>
+
+
+			<hr />
+			<header>
+				<h3>Poem</h3>
+				<p>In the previous point we have defined how a poem is not formatted. With that in mind, we can now define a poem as a song, canticle or rhyme that coccus in the source text. Such poems are formatted in three ways:</p>
+			</header>
+			<p>`Style 1` - First line out second line in (Odd line out, even lines in). Style 1 Example: மத்தேயு 3:3</p>
+			<pre>
+				<code>
+“பாலைநிலத்தில் குரல் ஒன்று
+      முழங்குகிறது: ஆண்டவருக்காக
+வழியை ஆயத்தமாக்குங்கள்;
+      அவருக்காகப் பாதையைச்
+செம்மையாக்குங்கள்”
+</code>
+			</pre>
+
+			<p>`Style 2` - First line in second line out (Odd line in, even lines out). This type of poems occur very rarely. Style 2 Example: மத்தேயு 2:17-18</p>
+			<pre>
+				<code>
+    “ராமாவிலே ஒரு குரல் கேட்கிறது;
+ஒரே புலம்பலும் பேரழுகையுமாய் இருக்கிறது;
+    இராகேல் தன் குழந்தைகளுக்காக
+அழுதுகொண்டிருக்கிறார்;
+    ஆறுதல் பெற அவர் மறுக்கிறார்;
+ஏனெனில் அவர் குழந்தைகள்
+    அவரோடு இல்லை”
+</code>
+			</pre>
+			<p>`poem para` - These are special types of quotations where the verse number stands out but the content is justified. Example: சபை உரையாளர் 10:1-4</p>
+			<pre>
+				<code>
+1    கலத்திலிருக்கும் நறுமணத் தைலம் முழுவதையும்
+     செத்த க்கள் முடைநாற்றம் வீசும்படி செய்துவிடும்.
+     அதுபோல சிறிய மதிகேடும் மேன்மையான
+     ஞானத்தைக் கெடுத்து விடும்.
+2    தக்கன செய்வதையே ஞானியரின் உள்ளம் நாடும்;
+     தகாதன செய்வதையே மூடரின் உள்ளம் நாடும்.
+3    மூடர் தெருவில் நடந்தாலே போதும்; அவரது மடமை
+     வெளியாகிவிடும். தாம் மூடர் என்பதை அவரே
+     அனைவருக்கும் காட்டிடுவார்.
+4    மேலதிகாரி உன்னைச் சினந்து கொண்டால்,
+     வேலையை விட்டு விடாதே. நீ அடக்கமாயிருந்தால்,
+     பெருங்குற்றமும் மன்னிக்கப்படலாம்.
+</code>
+			</pre>
+		</div>
+	</section>
+			<!-- Footer -->
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<section class="4u 6u(medium) 12u$(small)">
+				<h3>Partners</h3>
+				<p></p>
+				<ul class="alt">
+				
+				<li>Currently No one... :( But you can be the first. <a href="http://web.madharasan.com/contact" target="_blank">Drop me a line..</a> :)</a></li>
+				</ul>
+			</section>
+			<section class="4u 6u$(medium) 12u$(small)">
+				<h3>Inspired By</h3>
+				<p>The following were the source of inspiration for this project:</p>
+				<ul class="alt">
+					
+					<li><a href="https://www.youtube.com/watch?v=tu4t9FKn9M4">Why Bible Typography Matters?</a> &ndash; Mark L. Ward, Jr</li>
+					<li><a href="http://www.bibledesignblog.com/">Bible Design Blog</a> &ndash; J. Mark Bertrand</li>
+					<li><a href="http://www.bibliotheca.co/">BIBLIOTHECA</a> &ndash; Adam Lewis Greene</li>
+					
+				</ul>
+			</section>
+			<section class="4u$ 12u$(medium) 12u$(small)">
+				<h3>Connect with Us</h3>
+				<ul class="icons">
+				<li><a href="https://facebook.com/Thiruviviliam" class="icon rounded fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
+				<li><a href="https://github.com/jayarathina/Tamil-Bible-Database" class="icon rounded fa-github" target="_blank"><span class="label" >Github</span></a></li>
+				</ul>
+				<h3>Author</h3>
+				<ul class="icons">
+					<li><a href="http://madharasan.com/" class="icon rounded fa-user" target="_blank"><span class="label">WebPage</span></a></li>
+					<li><a href="https://facebook.com/jayarathina" class="icon rounded fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
+					<li><a href="http://web.madharasan.com/contact" class="icon rounded fa-envelope-o" target="_blank"><span class="label">Contact</span></a></li>
+				</ul>
+				<img src="webincludes/images/publicdomain.png" height='50px' align="bottom" />
+			</section>
+		</div>
+		<ul class="copyright">
+			<li>
+				<a href="#" class="icon fa-thumbs-up"><span class="label">Copyfree</span></a>
+				No rights reserved.
+			</li>
+			<li>
+				<a href='terms.html'>Terms and Conditions</a>
+			</li>		</ul>
+	</div>
+	
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10337712; 
+var sc_invisible=1; 
+var sc_security="9cf0800b"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="free web stats"
+href="http://statcounter.com/free-web-stats/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/10337712/0/9cf0800b/1/"
+alt="free web stats"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+</footer>	</body>
+</html>

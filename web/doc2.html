@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<title>Documentation: Markup</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="திருவிவிலியம் பொது மொழிபெயர்ப்பை இணையத்தில் உரை திருத்த ஒரு கூட்டு முயற்சி. Tamil Bible MySQL Database in Unicode" />
+<meta name="keywords" content="திருவிவிலியம், தமிழ் விவிலியம், திருவிவிலியம் பொது மொழிபெயர்பு, கத்தோலிக்க விவிலியம், Tamil Bible, Tamil Catholic Bible, TNBCLC Bible" />
+
+<script src="webincludes/js/jquery.min.js"></script>
+<script src="webincludes/js/skel.min.js"></script>
+<script src="webincludes/js/skel-layers.min.js"></script>
+<script src="webincludes/js/init.js"></script>
+
+<noscript>
+	<link rel="stylesheet" href="webincludes/css/skel.css" />
+	<link rel="stylesheet" href="webincludes/css/style.css" />
+	<link rel="stylesheet" href="webincludes/css/style-xlarge.css" />
+</noscript>
+
+<script type="text/javascript">
+initSettings('webincludes');
+</script>		<link rel="stylesheet" type="text/css" href="webincludes/css_/doc.css">
+</head>
+<body>
+		<script>document.write('<div class="loader" style="background:url(http://localhost/e/bible/webincludes/images/loader.gif) 50% 50% no-repeat rgb(255,255,255);"></div>');</script>
+
+<!-- Header -->
+<header id="header">
+	<h1>திருவிவிலியம்</h1>
+	<nav id="nav">
+		<ul>
+			<li><a href="index.html">முகப்பு</a></li>
+			<li><a href="toc.html">அட்டவணை</a></li>
+			<li><a href="doc1.html">Help</a></li>
+		</ul>
+	</nav>
+</header>		<!-- Main -->
+	<section id="main" class="wrapper">
+		<div class="container">
+		
+		<hr />
+<h3>Documentation</h3>
+<ul>
+	<li><a href='doc1.html'>Part 1 - Definition of Terms</a></li>
+	<li><a href='doc2.html'>Part 2 - Mark-up Syntax</a></li>
+	<li><a href='doc3.html'>Part 3 - Web App Usage Intro</a></li>
+	<li><a href='doc4.html'>Part 4 - Punctuation</a></li>
+	<li><a href='doc5.html'>Part 5 - Cheat sheet</a></li>
+</ul>
+<hr />
+
+			<header class="major">
+				<h4>Part 2 - Mark-up</h4>
+				<p>This contains the syntax of the mark-up code used to represent a bible chapter.</p>
+			</header>
+			<hr />
+			<p>
+				The aim of the project is to create/edit/proofread Tamil bible. So for that purpose, I have created a mark-up in which bible texts can be prepared so that they can easily be verified and processed. This mark-up can be edited in the web interface that is provided. The usage of this app is discussed in <a href='doc3.html'>the next part</a>.
+			</p>
+
+			<hr />
+			<header>
+				<h3>General Structure</h3>
+			</header>
+			<p>Mark-up is subdivided into units of:</p>
+			<ul>
+				<li>Titles</li>
+				<li>Verses (Verses also contain sub-markup for quotes, poems etc.,)</li>
+				<li>Footnotes and Cross References</li>
+				<li>Para breaks</li>
+			</ul>
+			<blockquote>
+				Each of these section start and end with a <a href='webincludes/images/tilde.png' target='_blank'>tilde symbol</a>
+				<code>~</code>
+				.<br />Line breaks are very important in this mark-up.
+			</blockquote>
+			<pre>
+<code>~
+Mark up text goes here
+~</code>
+			</pre>
+			<hr />
+			<header>
+				<h3>Comments</h3>
+			</header>
+
+			<p>
+				You can place comments in your code for reviewers to note. Use
+				<code>#</code>
+				to denote that it is a comment. Only single line comment is possible now. It has to be in its own section sorrounded by tidle symbol as shown here:
+			</p>
+			<pre>
+				<code>
+~
+# Hello this is a comment.
+~
+</code>
+			</pre>
+
+
+			<hr />
+			<header>
+				<h3>Para Breaks</h3>
+			</header>
+
+			<p>
+				Para Breaks are denoted by
+				<code>{br}</code>
+				placed next to the verse after which a para break should occour. Note the tilde symbol, they are not part of the verse but a seperate section on their own.
+			</p>
+			<pre>
+				<code>
+~
+{br}
+~
+</code>
+			</pre>
+			<hr />
+			<header>
+				<h3>Mark-up Verse</h3>
+			</header>
+			<p>A verse Mark-up has two parts (lines). First line contains the Verse number and the second contains the actual verse:</p>
+			<pre>
+				<code>~
+v/1
+தொடக்கத்தில் கடவுள் விண்ணுலகையும், மண்ணுலகையும் படைத்தபொழுது,
+~
+</code>
+			</pre>
+			<ul>
+				<li>Here <code>v/1</code> - Here the letter V denotes that the following line is a verse. The number that follows after the slash denotes that it is <i>Verse number 1</i>.
+				</li>
+				<li>Continuous verses can be represented as <code>v/7-19</code> or as <code>v/14,18</code>. The first verse in the continuous verse will have the complete verse text and rest of the verse will have <code>same as above</code> in the place of the verse. <pre>
+				<code>~
+v/7-8
+அதற்கு எஸ்தர், “என் விண்ணப்பமும் வேண்டுகோளும் இதுவே: மன்னரின் கண்களில் எனக்குத் தயவு கிடைத்தால் மன்னரின் பார்வையில் இது நலமெனத் தோன்றினால், மன்னரும் ஆமானும் நான் நாளைய தினமும் உங்களுக்காய் ஆயத்தம் செய்யும் விருந்திற்கு வருகை தருமாறு வேண்டுகிறேன். அவ்வமயம் மன்னரின் வார்த்தையின்படி என் விண்ணப்பத்தைத் தெரிவிப்பேன்” என்று பதிலிறுத்தாள்.
+~
+v/8
+Same as above
+~
+</code>
+
+</li>
+				<li>In the printed version of the bible, for sub verses, english alphabet and tamil alphabets are used interchangebly. Let us use only english alphabets. That makes it uniform and easier for database retrival.</li>
+				<li>The verse can contain other mark-ups for poem and indention etc., which are discussed later in this page.</li>
+			</ul>
+			<hr />
+			<header>
+				<h3>Mark-up Header</h3>
+			</header>
+			<p>
+				Similar to a verse mark-up, header mark-up too has two parts. First line conains the Verse number <u><i>after which</i></u> the header occurs and the second contains the actual verse:
+			</p>
+			<pre>
+				<code>~
+t/0
+கடவுள் உலகைப் படைத்தல்
+~
+</code>
+			</pre>
+			<p>
+				Here
+				<code>t/0</code>
+				- Here the letter t denotes that the following line is a header(title). The number that follows after the slash denotes that this header should come *after the verse 0* (that is before verse 1).
+			</p>
+			Case 1:
+			<blockquote>
+
+
+
+				If header occurs within a verse (See part 1 for example) use
+				<code>{t}</code>
+				to denote the location.
+
+				<pre>
+					<code>~
+v/4
+இவையே விண்ணுலக, மண்ணுலகப் படைப்பின் தோற்ற முறைமையாம்.{t}ஆண்டவராகிய கடவுள் மண்ணுலகையும், விண்ணுலகையும் உருவாக்கிய பொழுது,
+~
+t/4
+ஆண் - பெண் படைப்பு
+~
+</code>
+				</pre>
+
+				<ul>
+					<li>Here the verse will be split at the location of {t} and the header text will be inserted there.</li>
+					<li>Note that if the header occurs within the verse, the mark-up for the header is placed *after the verse*.</li>
+				</ul>
+
+
+			</blockquote>
+			Case two:
+			<blockquote>
+				<ul>
+					<li>If there are multiple levels of header available, then use <code>{h}</code> to denote their location.
+					</li>
+					<li>If same level header is written in two lines, then use <code>{br}</code> to indicate the break point.
+					</li>
+				</ul>
+
+
+				Example (மத்தேயு அதிகாரம் 1):
+
+				<pre>
+					<code>~
+t/0
+இயேசுவின்  பிறப்பும்  குழந்தைப் பருவமும்{h}இயேசுவின் மூதாதையர் பட்டியல்{br}(லூக் 3:23 - 38)
+~
+</code>
+				</pre>
+				will be coded as:
+
+				<blockquote>
+					&lt;h1&gt;இயேசுவின் பிறப்பும் குழந்தைப் பருவமும்&lt;/h1&gt;<br /> &lt;h2&gt;இயேசுவின் மூதாதையர் பட்டியல் &lt;br/&gt;(லூக் 3:23 - 38) &lt;/h2&gt;
+				</blockquote>
+				And rendered as:
+				<blockquote>
+
+					<h3>இயேசுவின் பிறப்பும் குழந்தைப் பருவமும்</h3>
+					<h4>
+						இயேசுவின் மூதாதையர் பட்டியல் <br />(லூக் 3:23 - 38)
+					</h4>
+
+				</blockquote>
+
+				Note that the second header is split into two lines, and is of the same style.
+			</blockquote>
+
+			<hr />
+			<header>
+				<h3>Indent and Outdent</h3>
+			</header>
+			<p>
+				Indent and outdent are represented using
+				<code>{i}</code>
+				,
+				<code>{/i}</code>
+				,
+				<code>{o}</code>
+				and
+				<code>{/o}</code>
+				respectively. Example
+			</p>
+			<pre>
+				<code>~
+t/45
+மரியாவின் பாடல்
+~
+v/46
+{o}அதைக் கேட்ட மரியா பின்வருமாறு கூறினார்:{/o}
+~
+</code>
+			</pre>
+			<hr />
+
+			<header>
+				<h3>Poems</h3>
+			</header>
+			<p>
+				Similar to indents above, poems are marked with
+				<code>{q1}</code>
+				,
+				<code>{/q1}</code>
+				and
+				<code>{q2}</code>
+				,
+				<code>{/q2}</code>
+				for poem style 1 and 2 respectively. But note that it is split into multiple lines. These lines will be automatically tagged and displayed.
+			</p>
+			<pre>
+				<code>~
+v/47
+{p1}“ஆண்டவரை எனது உள்ளம் 
+ போற்றிப் பெருமைப் படுத்துகின்றது. 
+ என் மீட்பராம் கடவுளை நினைத்து 
+ எனது மனம் பேருவகை கொள்கின்றது.{/p1}
+~
+</code>
+			</pre>
+
+			<p>
+				Style 3 or `poem para` style is achieved by simply using
+				<code>{q1}</code>
+				and
+				<code>{/q1}</code>
+				in a single line.
+			</p>
+
+			<pre>
+				<code>~
+v/1
+{p1}கலத்திலிருக்கும் நறுமணத் தைலம் முழுவதையும்  செத்தக்கள் முடைநாற்றம் வீசும்படி செய்துவிடும். அதுபோல சிறிய மதிகேடும் மேன்மையான ஞானத்தைக் கெடுத்து விடும்..{/p1}
+~
+</code>
+			</pre>
+
+			<hr />
+			<header>
+				<h3>Footnotes and Cross references</h3>
+			</header>
+
+			<p>Markup for cross reference is placed at the end of the code. Cross references mark-up is placed first followed by footnotes. Note that they are arranged one cross-reference/footnote per line as follows:</p>
+			<pre>
+				<code>
+~
+c/3 2 கொரி 4:6
+c/6-8 2 பேது 3:5
+c/26 1 கொரி 11:7
+c/27 மத் 19:4; மாற் 10:6
+c/27-28 தொநூ 5:1-2
+f/27 ‘ஆதாம்’ என்பது எபிரேய பாடம்
+~
+</code>
+			</pre>
+
+
+		</div>
+	</section>
+			<!-- Footer -->
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<section class="4u 6u(medium) 12u$(small)">
+				<h3>Partners</h3>
+				<p></p>
+				<ul class="alt">
+				
+				<li>Currently No one... :( But you can be the first. <a href="http://web.madharasan.com/contact" target="_blank">Drop me a line..</a> :)</a></li>
+				</ul>
+			</section>
+			<section class="4u 6u$(medium) 12u$(small)">
+				<h3>Inspired By</h3>
+				<p>The following were the source of inspiration for this project:</p>
+				<ul class="alt">
+					
+					<li><a href="https://www.youtube.com/watch?v=tu4t9FKn9M4">Why Bible Typography Matters?</a> &ndash; Mark L. Ward, Jr</li>
+					<li><a href="http://www.bibledesignblog.com/">Bible Design Blog</a> &ndash; J. Mark Bertrand</li>
+					<li><a href="http://www.bibliotheca.co/">BIBLIOTHECA</a> &ndash; Adam Lewis Greene</li>
+					
+				</ul>
+			</section>
+			<section class="4u$ 12u$(medium) 12u$(small)">
+				<h3>Connect with Us</h3>
+				<ul class="icons">
+				<li><a href="https://facebook.com/Thiruviviliam" class="icon rounded fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
+				<li><a href="https://github.com/jayarathina/Tamil-Bible-Database" class="icon rounded fa-github" target="_blank"><span class="label" >Github</span></a></li>
+				</ul>
+				<h3>Author</h3>
+				<ul class="icons">
+					<li><a href="http://madharasan.com/" class="icon rounded fa-user" target="_blank"><span class="label">WebPage</span></a></li>
+					<li><a href="https://facebook.com/jayarathina" class="icon rounded fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
+					<li><a href="http://web.madharasan.com/contact" class="icon rounded fa-envelope-o" target="_blank"><span class="label">Contact</span></a></li>
+				</ul>
+				<img src="webincludes/images/publicdomain.png" height='50px' align="bottom" />
+			</section>
+		</div>
+		<ul class="copyright">
+			<li>
+				<a href="#" class="icon fa-thumbs-up"><span class="label">Copyfree</span></a>
+				No rights reserved.
+			</li>
+			<li>
+				<a href='terms.html'>Terms and Conditions</a>
+			</li>		</ul>
+	</div>
+	
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=10337712; 
+var sc_invisible=1; 
+var sc_security="9cf0800b"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="free web stats"
+href="http://statcounter.com/free-web-stats/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/10337712/0/9cf0800b/1/"
+alt="free web stats"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+</footer>	</body>
+</html>

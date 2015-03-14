@@ -12,6 +12,8 @@
 <script src="webincludes/js/skel-layers.min.js"></script>
 <script src="webincludes/js/init.js"></script>
 
+<link rel="stylesheet" href="webincludes/css_/all.css" />
+
 <noscript>
 	<link rel="stylesheet" href="webincludes/css/skel.css" />
 	<link rel="stylesheet" href="webincludes/css/style.css" />
@@ -25,9 +27,8 @@ initSettings('webincludes');
 <body>
 		<div id="ld1"></div>
 <script type="text/javascript">
-document.getElementById("ld1").className = "loader";
+$("#ld1").addClass("loader");
 </script>
-
 <!-- Header -->
 <header id="header">
 	<h1>திருவிவிலியம்</h1>
@@ -42,24 +43,21 @@ document.getElementById("ld1").className = "loader";
 	<section id="main" class="wrapper">
 		<div class="container">
 		
-		<hr />
-<h3>Documentation</h3>
-<ul>
-	<li><a href='doc1.html'>Part 1 - Definition of Terms</a></li>
-	<li><a href='doc2.html'>Part 2 - Mark-up Syntax</a></li>
-	<li><a href='doc3.html'>Part 3 - Web App Usage Intro</a></li>
-	<li><a href='doc4.html'>Part 4 - Punctuation</a></li>
-	<li><a href='doc5.html'>Part 5 - Cheat sheet</a></li>
-</ul>
-<hr />
-
+		<header class="major">
+<h4 style='text-align: center;'>Documentation</h4>
+<p class='menu'><a href='doc1.html'>Definition of Terms</a> | 2 - Mark-up Syntax | <a href='doc3.html'>Web App Usage Intro</a> | <a href='doc4.html'>Punctuation</a> | <a href='doc5.html'>Cheat sheet</a></p>
+</header>
 			<header class="major">
 				<h4>Part 2 - Mark-up</h4>
 				<p>This contains the syntax of the mark-up code used to represent a bible chapter.</p>
 			</header>
 			<hr />
 			<p>
-				The aim of the project is to create/edit/proofread Tamil bible. So for that purpose, I have created a mark-up in which bible texts can be prepared so that they can easily be verified and processed. This mark-up can be edited in the web interface that is provided. The usage of this app is discussed in <a href='doc3.html'>the next part</a>.
+				The aim of the project is to create/edit/proofread Tamil bible
+				So for that purpose, I have created a mark-up in which the bible texts will be presented for editing.
+				This is help in reviewing process.
+				This mark-up can be edited in the web interface that is provided.
+				The usage of this interface is discussed in <a href='doc3.html'>the next part</a>.
 			</p>
 
 			<hr />
@@ -91,12 +89,13 @@ Mark up text goes here
 			<p>
 				You can place comments in your code for reviewers to note. Use
 				<code>#</code>
-				to denote that it is a comment. Only single line comment is possible now. It has to be in its own section sorrounded by tidle symbol as shown here:
+				to denote that it is a comment. It has to be in its own section sorrounded by tidle symbol as shown here:
 			</p>
 			<pre>
 				<code>
 ~
 # Hello this is a comment.
+Some more comments I guess...
 ~
 </code>
 			</pre>
@@ -263,14 +262,27 @@ v/46
 			</header>
 			<p>
 				Similar to indents above, poems are marked with
+				<code>{p1}</code>
+				,
+				<code>{/p1}</code>
+				and
+				<code>{p2}</code>
+				,
+				<code>{/p2}</code>
+				for poem style 1 and 2 respectively.
+				
+				You can also use 
+				
 				<code>{q1}</code>
 				,
 				<code>{/q1}</code>
 				and
 				<code>{q2}</code>
 				,
-				<code>{/q2}</code>
-				for poem style 1 and 2 respectively. But note that it is split into multiple lines. These lines will be automatically tagged and displayed.
+				<code>{/q2}</code>.
+				
+				
+				But note that it is split into multiple lines. These lines will be automatically tagged and displayed.
 			</p>
 			<pre>
 				<code>~
@@ -285,9 +297,9 @@ v/47
 
 			<p>
 				Style 3 or `poem para` style is achieved by simply using
-				<code>{q1}</code>
+				<code>{p1}</code>
 				and
-				<code>{/q1}</code>
+				<code>{/p1}</code>
 				in a single line.
 			</p>
 

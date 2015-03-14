@@ -29,3 +29,10 @@ blockquote > h4{
 	text-decoration: none;
 	font-style: normal;
 }
+
+header.major p.menu {
+    border-top: medium double rgba(144, 144, 144, 0.25);
+    border-bottom: medium double rgba(144, 144, 144, 0.25);
+    display: block;
+    padding: 5px;
+}

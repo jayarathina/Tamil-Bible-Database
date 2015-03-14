@@ -12,6 +12,8 @@
 <script src="webincludes/js/skel-layers.min.js"></script>
 <script src="webincludes/js/init.js"></script>
 
+<link rel="stylesheet" href="webincludes/css_/all.css" />
+
 <noscript>
 	<link rel="stylesheet" href="webincludes/css/skel.css" />
 	<link rel="stylesheet" href="webincludes/css/style.css" />
@@ -25,9 +27,8 @@ initSettings('webincludes');
 <body>
 		<div id="ld1"></div>
 <script type="text/javascript">
-document.getElementById("ld1").className = "loader";
+$("#ld1").addClass("loader");
 </script>
-
 <!-- Header -->
 <header id="header">
 	<h1>திருவிவிலியம்</h1>
@@ -41,21 +42,17 @@ document.getElementById("ld1").className = "loader";
 </header>		<!-- Main -->
 	<section id="main" class="wrapper">
 		<div class="container">
-			<hr />
-<h3>Documentation</h3>
-<ul>
-	<li><a href='doc1.html'>Part 1 - Definition of Terms</a></li>
-	<li><a href='doc2.html'>Part 2 - Mark-up Syntax</a></li>
-	<li><a href='doc3.html'>Part 3 - Web App Usage Intro</a></li>
-	<li><a href='doc4.html'>Part 4 - Punctuation</a></li>
-	<li><a href='doc5.html'>Part 5 - Cheat sheet</a></li>
-</ul>
-<hr />
 			<header class="major">
+<h4 style='text-align: center;'>Documentation</h4>
+<p class='menu'><a href='doc1.html'>Definition of Terms</a> | <a href='doc2.html'>Mark-up Syntax</a> | <a href='doc3.html'>Web App Usage Intro</a> | <a href='doc4.html'>Punctuation</a> | 5 - Cheat sheet</p>
+</header>			<header class="major">
 				<h4>Part 5 - Cheat sheet</h4>
 				<p>This section contains summary of symbols discussed earlier</p>
 			</header>
 			<hr />
+			<header>
+				<h3>Summary of code tags:</h3>
+			</header>
 			<div class="table-wrapper">
 				<table>
 					<thead>
@@ -87,11 +84,11 @@ document.getElementById("ld1").className = "loader";
 						</tr>
 						<tr>
 							<td>Poem style 1</td>
-							<td><code>{q1}</code> and <code>{/q1}</code></td>
+							<td><code>{p1}</code> and <code>{/p1}</code> or <code>{q1}</code> and <code>{/q1}</code></td>
 						</tr>
 						<tr>
 							<td>Poem style 2</td>
-							<td><code>{q2}</code> and <code>{/q2}</code></td>
+							<td><code>{p2}</code> and <code>{/p2}</code> or <code>{q2}</code> and <code>{/q2}</code></td>
 						</tr>
 						<tr>
 							<td>Poem style 3</td>
@@ -121,9 +118,25 @@ document.getElementById("ld1").className = "loader";
 				</table>
 			</div>
 
-
-
 			<div class="table-wrapper">
+
+				<hr />
+
+				<header id="abbr">
+					<h3>Complete list of functionality of Expand Abbreviation Button:</h3>
+				</header>
+				<p>
+
+					<img src="webincludes/images/edit1.jpg" alt="" />
+				</p>
+
+				<ul>
+					<li>Replaces multiple spaces into one</li>
+					<li>Removes blank lines</li>
+					<li>Removes trailing whitespaces</li>
+				</ul>
+
+
 				<table class="alt">
 					<thead>
 						<tr>
@@ -135,52 +148,103 @@ document.getElementById("ld1").className = "loader";
 					<tbody>
 						<tr>
 							<td>s' or 's</td>
-							<td><h2 class='disp'>‘</h2> </td>
-							<td>S followed by a single quote or vice versa will be replaced by <u>S</u>tart single quote</td>
+							<td><h2 class='disp'>‘</h2></td>
+							<td>S followed by a single quote or vice versa will be replaced by <u>S</u>tart single quote
+							</td>
 						</tr>
 						<tr>
-							<td> e' or 'e  </td>
-							<td><h2 class='disp'>’</h2> </td>
-							<td>E followed by a single quote or vice versa will be replaced by <u>E</u>nd single quote</td>
+							<td>e' or 'e</td>
+							<td><h2 class='disp'>’</h2></td>
+							<td>E followed by a single quote or vice versa will be replaced by <u>E</u>nd single quote
+							</td>
 						</tr>
 						<tr>
-							<td> s" or "s  </td>
-							<td><h2 class='disp'>“</h2> </td>
-							<td>S followed by a double quote or vice versa will be replaced by <u>S</u>tart double quote</td>
+							<td>s" or "s</td>
+							<td><h2 class='disp'>“</h2></td>
+							<td>S followed by a double quote or vice versa will be replaced by <u>S</u>tart double quote
+							</td>
 						</tr>
 						<tr>
-							<td> e" or "e  </td>
-							<td><h2 class='disp'>”</h2> </td>
-							<td>E followed by a double quote or vice versa will be replaced by <u>E</u>nd double quote</td>
+							<td>e" or "e</td>
+							<td><h2 class='disp'>”</h2></td>
+							<td>E followed by a double quote or vice versa will be replaced by <u>E</u>nd double quote
+							</td>
 						</tr>
 						<tr>
-							<td> -n- </td>
-							<td><h2 class='disp'>–</h2> </td>
+							<td>-n-</td>
+							<td><h2 class='disp'>–</h2></td>
 							<td>N dash</td>
 						</tr>
 						<tr>
-							<td> -m- </td>
-							<td><h2 class='disp'>—</h2> </td>
+							<td>-m-</td>
+							<td><h2 class='disp'>—</h2></td>
 							<td>M dash</td>
 						</tr>
 						<tr>
-							<td> saa </td>
+							<td>saa</td>
 							<td>Same as above</td>
 							<td>For coupled verses</td>
 						</tr>
 						<tr>
-							<td> + </td>
-							<td><h2 class='disp'>†</h2> </td>
+							<td>+</td>
+							<td><h2 class='disp'>†</h2></td>
 							<td>Dagger symbol for footnotes</td>
 						</tr>
 						<tr>
-							<td> ++ </td>
-							<td><h2 class='disp'>‡</h2> </td>
+							<td>++</td>
+							<td><h2 class='disp'>‡</h2></td>
 							<td>Double dagger symbol for footnotes</td>
+						</tr>
+						<tr>
+							<td>br</td>
+							<td>{br}</td>
+							<td>To make it easier to enter break points</td>
+						</tr>
+						<tr>
+							<td>All q tags</td>
+							<td>Will be made into p tags</td>
+							<td>To make all tags look unifor with p tag</td>
+						</tr>
+						<tr>
+							<td>{p} or {q}</td>
+							<td>{p1}</td>
+							<td>Tags without style number will be converted to style 1</td>
+						</tr>
+						<tr>
+							<td>Example:<br /> pஆண்டவர் நமக்குக் காட்டும்<br />மாறாத அன்பு மிகப்பெரியது;<br />அவரது உண்மை என்றென்றும் <br />நிலைத்துள்ளது. அல்லேலூயா!p
+							</td>
+							<td>converted to tag {p} Result:<br /> {p1}ஆண்டவர் நமக்குக் காட்டும்<br />மாறாத அன்பு மிகப்பெரியது;<br />அவரது உண்மை என்றென்றும் <br />நிலைத்துள்ளது. அல்லேலூயா!{/p1}
+							</td>
+							<td>letter p (or q) at the start and end of verse will be converted to tag {p1}</td>
+						</tr>
+
+						<tr>
+							<td>{p1}<br />ஆண்டவர் நமக்குக் காட்டும்<br />மாறாத அன்பு மிகப்பெரியது;<br />அவரது உண்மை என்றென்றும் <br />நிலைத்துள்ளது. அல்லேலூயா!<br />{/p1}
+
+							</td>
+							<td>{p1}ஆண்டவர் நமக்குக் காட்டும்<br />மாறாத அன்பு மிகப்பெரியது;<br />அவரது உண்மை என்றென்றும் <br />நிலைத்துள்ளது. அல்லேலூயா!{/p1}
+							</td>
+							<td>New lines that occur after start poem tags {p1} {p2} and before end tags {/p1} or {/p2} will be removed</td>
+						</tr>
+
+						<tr>
+							<td>~<br />v/7-8<br />ஆண்டவர் நமக்குக் காட்டும்<br />மாறாத அன்பு மிகப்பெரியது;<br />
+							<br />அவரது உண்மை என்றென்றும் <br />நிலைத்துள்ளது. அல்லேலூயா!<br />~
+
+							</td>
+							<td>~<br />v/7-8<br />{p1}ஆண்டவர் நமக்குக் காட்டும்<br />மாறாத அன்பு மிகப்பெரியது;<br />
+							<br />அவரது உண்மை என்றென்றும் <br />நிலைத்துள்ளது. அல்லேலூயா!{/p1}<br />~
+							</td>
+							<td>If a verse conatins lines breaks without any p or q tag then it will be tagged as {p1}. This will help in tagging poetic books like psalms.</td>
 						</tr>
 
 					</tbody>
 				</table>
+
+
+
+
+
 			</div>
 
 

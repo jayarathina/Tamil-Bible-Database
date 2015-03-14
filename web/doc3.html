@@ -12,6 +12,8 @@
 <script src="webincludes/js/skel-layers.min.js"></script>
 <script src="webincludes/js/init.js"></script>
 
+<link rel="stylesheet" href="webincludes/css_/all.css" />
+
 <noscript>
 	<link rel="stylesheet" href="webincludes/css/skel.css" />
 	<link rel="stylesheet" href="webincludes/css/style.css" />
@@ -25,9 +27,8 @@ initSettings('webincludes');
 <body>
 		<div id="ld1"></div>
 <script type="text/javascript">
-document.getElementById("ld1").className = "loader";
+$("#ld1").addClass("loader");
 </script>
-
 <!-- Header -->
 <header id="header">
 	<h1>திருவிவிலியம்</h1>
@@ -41,17 +42,10 @@ document.getElementById("ld1").className = "loader";
 </header>		<!-- Main -->
 	<section id="main" class="wrapper">
 		<div class="container">
-			<hr />
-<h3>Documentation</h3>
-<ul>
-	<li><a href='doc1.html'>Part 1 - Definition of Terms</a></li>
-	<li><a href='doc2.html'>Part 2 - Mark-up Syntax</a></li>
-	<li><a href='doc3.html'>Part 3 - Web App Usage Intro</a></li>
-	<li><a href='doc4.html'>Part 4 - Punctuation</a></li>
-	<li><a href='doc5.html'>Part 5 - Cheat sheet</a></li>
-</ul>
-<hr />
 			<header class="major">
+<h4 style='text-align: center;'>Documentation</h4>
+<p class='menu'><a href='doc1.html'>Definition of Terms</a> | <a href='doc2.html'>Mark-up Syntax</a> | 3 - Web App Usage Intro | <a href='doc4.html'>Punctuation</a> | <a href='doc5.html'>Cheat sheet</a></p>
+</header>			<header class="major">
 				<h4>Part 3 - Web App Usage Intro</h4>
 				<p>This part contains general tip for using the web app.</p>
 			</header>
@@ -76,7 +70,7 @@ document.getElementById("ld1").className = "loader";
 				<span class="image fit"><img style="" title="" src="webincludes/images/edit2.jpg" alt=""></span>
 			</div>
 
-			<p>The chapters are color coded as follows:</p>
+			<p id='colorCode'>The chapters are color coded as follows:</p>
 
 			<ul>
 				<li>Chapters <code>available</code> for editing are colored in <span style='background-color: #F39C12; color: white;'>Orange</span>.
@@ -89,7 +83,9 @@ document.getElementById("ld1").className = "loader";
 				<li><code>Locked</code> chapters are colored in <span style='background-color: #D2D6DE;'>Gray</span>. (Some chapters are locked because of technical difficulty of representing them in a mark-up.)</li>
 			</ul>
 
-			<p>This color combination is used all through out the site. Once you have chosen a chapter to edit, other available chapters will be disabled for you. Your chosen chapter will be disabled for others to edit too.</p>
+			<p>This color combination is used all through out the site. 
+			Once you have chosen a chapter to edit, other available chapters will be disabled for you. 
+			Your chosen chapter will be disabled for others to edit too.</p>
 
 			<hr />
 			<header>
@@ -102,15 +98,19 @@ document.getElementById("ld1").className = "loader";
 				<li>Preview tab to see live preview of the mark-up in HTML</li>
 				<li>And difference tab to see the difference between the source text and the edited text</li>
 			</ul>
+			<blockquote>WARNING: Using difference tab might crash old browsers or make it unresponsive. Save your code locally before viewing difference.</blockquote>
 			<p>
 				The edit tab contains these buttons:<br /> <img src="webincludes/images/edit1.jpg" alt="" />
 
 			</p>
 
 			<ul>
-				<li>4. The last button, ie., the abandon button, will free up the chapter for others to edit. Your edits will be lost. Please note that even partial edits can be submitted for review.</li>
-				<li>3. Discard changes button will restore the original untouched mark-up in the text box so you can start over again.</li>
-				<li>2. Save locally button will save a local copy of your edits in your browser. This feature can be used to restore edits in between sessions, in case of a browser crash. Please note that this does not automatically save, you have to manually do it. This feature requires <a href='http://caniuse.com/#feat=namevalue-storage' target='_blank'>a browses that supports local storage</a>.
+				<li>4. The last button, ie., the <code>abandon button</code>, will free up the chapter for others to edit. Your edits will be lost. Please note that even partial edits can be submitted for review.</li>
+				<li>3. <code>Discard changes</code> button will restore the original untouched mark-up in the text box so you can start over again.</li>
+				<li>2. <code>Save locally</code> button will save a local copy of your edits in your browser. This feature can be used to restore edits in between sessions,
+				in case of a browser crash. Please note that this does not automatically save, you have to manually do it.
+				This feature requires <a href='http://caniuse.com/#feat=namevalue-storage' target='_blank'>a browses that supports local storage</a>.
+				And most importantly if you abandon, logout, clear your browser cache, or *have not logged in on a different machine* your edits saved locally on a machine will be lost.
 				</li>
 				<li>1. Expand Abbreviation button is used to expand most commonly used abbreviation. Please see Documentation <a href='doc4.html'>Part 4 - Punctuation</a> for more details on what is being expanded in here.
 				</li>

@@ -1,4 +1,4 @@
-This folder contains phpMyAdmin SQL Dump of tables the whole database table is available in `bible.sql`.
+This folder contains MySQL Dump of tables. The whole database table is available in `bible.sql` as a single file.
 
 #Tables
 * `t_book_key.sql` - Intro text, Book name for each book in the bible.

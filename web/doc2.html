@@ -45,7 +45,7 @@ $("#ld1").addClass("loader");
 		
 		<header class="major">
 <h4 style='text-align: center;'>Documentation</h4>
-<p class='menu'><a href='doc1.html'>Definition of Terms</a> | 2 - Mark-up Syntax | <a href='doc3.html'>Web App Usage Intro</a> | <a href='doc4.html'>Punctuation</a> | <a href='doc5.html'>Cheat sheet</a></p>
+<p class='menu'><a href='doc1.html'>Introduction</a> | Mark-up Syntax | <a href='doc3.html'>Web App Usage Intro</a> | <a href='doc4.html'>Punctuation</a> | <a href='doc5.html'>Cheat sheet</a></p>
 </header>
 			<header class="major">
 				<h4>Part 2 - Mark-up</h4>
@@ -53,11 +53,7 @@ $("#ld1").addClass("loader");
 			</header>
 			<hr />
 			<p>
-				The aim of the project is to create/edit/proofread Tamil bible
-				So for that purpose, I have created a mark-up in which the bible texts will be presented for editing.
-				This is help in reviewing process.
-				This mark-up can be edited in the web interface that is provided.
-				The usage of this interface is discussed in <a href='doc3.html'>the next part</a>.
+				The bible texts are presented for editing in the following mark-up. This is to help in the reviewing process. This mark-up can be edited in a web interface that is provided. The usage of this interface is discussed in <a href='doc3.html'>the next part</a>.
 			</p>
 
 			<hr />
@@ -89,7 +85,7 @@ Mark up text goes here
 			<p>
 				You can place comments in your code for reviewers to note. Use
 				<code>#</code>
-				to denote that it is a comment. It has to be in its own section sorrounded by tidle symbol as shown here:
+				to denote that it is a comment. It has to be in its own section surrounded by tilde symbol as shown here:
 			</p>
 			<pre>
 				<code>
@@ -109,7 +105,7 @@ Some more comments I guess...
 			<p>
 				Para Breaks are denoted by
 				<code>{br}</code>
-				placed next to the verse after which a para break should occour. Note the tilde symbol, they are not part of the verse but a seperate section on their own.
+				placed next to the verse after which a para break should occour. Note the tilde symbol in the code, they are not part of the verse but a seperate section on their own. The para breaks for this database is taken from ESV bible. Which is not the same as the one TNBCLC has used. Some places ESV divisions are great, but in some other places TNBCLC divisions are great. Use your own judgement on whether to leave the existing para-break or modify it.
 			</p>
 			<pre>
 				<code>
@@ -133,7 +129,7 @@ v/1
 			<ul>
 				<li>Here <code>v/1</code> - Here the letter V denotes that the following line is a verse. The number that follows after the slash denotes that it is <i>Verse number 1</i>.
 				</li>
-				<li>Continuous verses can be represented as <code>v/7-19</code> or as <code>v/14,18</code>. The first verse in the continuous verse will have the complete verse text and rest of the verse will have <code>same as above</code> in the place of the verse. <pre>
+				<li>Continuous verses can be represented as <code>v/7-19</code> or as <code>v/14,18</code>. The first verse in the continuous verses will have the complete verse text and rest of the verses will have <code>same as above</code> in the place of the verse. <pre>
 				<code>~
 v/7-8
 அதற்கு எஸ்தர், “என் விண்ணப்பமும் வேண்டுகோளும் இதுவே: மன்னரின் கண்களில் எனக்குத் தயவு கிடைத்தால் மன்னரின் பார்வையில் இது நலமெனத் தோன்றினால், மன்னரும் ஆமானும் நான் நாளைய தினமும் உங்களுக்காய் ஆயத்தம் செய்யும் விருந்திற்கு வருகை தருமாறு வேண்டுகிறேன். அவ்வமயம் மன்னரின் வார்த்தையின்படி என் விண்ணப்பத்தைத் தெரிவிப்பேன்” என்று பதிலிறுத்தாள்.
@@ -196,14 +192,14 @@ t/4
 			Case two:
 			<blockquote>
 				<ul>
-					<li>If there are multiple levels of header available, then use <code>{h}</code> to denote their location.
+					<li>If there are multiple levels of header available, then use <code>{h}</code> to denote their location. Multiple level does not mean, multiple headers, but headers which acts as a title for multiple chapters. These headers divide the entire book into units.
 					</li>
-					<li>If same level header is written in two lines, then use <code>{br}</code> to indicate the break point.
+					<li>If a single level header is written in two lines, then use <code>{br}</code> to indicate the break point.
 					</li>
 				</ul>
 
 
-				Example (மத்தேயு அதிகாரம் 1):
+				Example code with both of the above point in a single header (மத்தேயு 1):
 
 				<pre>
 					<code>~
@@ -212,7 +208,7 @@ t/0
 ~
 </code>
 				</pre>
-				will be coded as:
+				will be generated as:
 
 				<blockquote>
 					&lt;h1&gt;இயேசுவின் பிறப்பும் குழந்தைப் பருவமும்&lt;/h1&gt;<br /> &lt;h2&gt;இயேசுவின் மூதாதையர் பட்டியல் &lt;br/&gt;(லூக் 3:23 - 38) &lt;/h2&gt;
@@ -269,20 +265,16 @@ v/46
 				<code>{p2}</code>
 				,
 				<code>{/p2}</code>
-				for poem style 1 and 2 respectively.
-				
-				You can also use 
-				
+				for poem style 1 and 2 respectively. You can also use
+
 				<code>{q1}</code>
 				,
 				<code>{/q1}</code>
 				and
 				<code>{q2}</code>
 				,
-				<code>{/q2}</code>.
-				
-				
-				But note that it is split into multiple lines. These lines will be automatically tagged and displayed.
+				<code>{/q2}</code>
+				. But note that it is split into multiple lines. These lines will be automatically tagged and displayed.
 			</p>
 			<pre>
 				<code>~
@@ -300,7 +292,7 @@ v/47
 				<code>{p1}</code>
 				and
 				<code>{/p1}</code>
-				in a single line.
+				in a single line (without line breaks).
 			</p>
 
 			<pre>
@@ -308,29 +300,41 @@ v/47
 v/1
 {p1}கலத்திலிருக்கும் நறுமணத் தைலம் முழுவதையும்  செத்தக்கள் முடைநாற்றம் வீசும்படி செய்துவிடும். அதுபோல சிறிய மதிகேடும் மேன்மையான ஞானத்தைக் கெடுத்து விடும்..{/p1}
 ~
-</code>
-			</pre>
+</code></pre>
 
+			<p>
+				Another example in style 1 with multiple "first line out", திருப்பாடல்கள் 119:98 which we saw in Introduction part of this documentation will be coded as:
+			</p>
+<pre><code>~
+v/98
+{p1}என் எதிரிகளைவிட என்னை{br}ஞானியாக்கியது உமது கட்டளை;
+ஏனெனில், என்றென்றும் அது{br}என்னோடு உள்ளது.{/p1}
+~
+</code></pre>
+<p>Note the placement of {br} tags to get the desired effect.</p>
+
+<p>It is always advisable to stick to the formatting of the print version. But because of the limitations of the print version, which web version does not have, it is not always necessary to do so. Use your own judgement to decide on how to format texts, especially poems.</p>
+
+<p>When formatting a poem, consider the aesthetic of the verse when it is rendered.
+There are some nouns (names of people and places) which are hyphenated by default.
+But there are other long words which are hyphenated because of space constraints. *Do not hyphenate such words*.
+For example in <a href='webincludes/images/ps124.jpg' target='_blank'>Ps. 124:1</a> the word இஸ்ரயேல்  is broken into two parts because of space constraints:
+Do not break such words. In short use your personal judgement on when to or not to break.</p>
+<p>Expand Abbreviation button in the web app will help you to code poems easily. Please read next and the final chapters to know more about its functionality.</p>
+			
 			<hr />
 			<header>
 				<h3>Footnotes and Cross references</h3>
 			</header>
-
-			<p>Markup for cross reference is placed at the end of the code. Cross references mark-up is placed first followed by footnotes. Note that they are arranged one cross-reference/footnote per line as follows:</p>
-			<pre>
-				<code>
-~
+			<p>Mark-up for cross reference is placed at the end of the code. Cross references mark-up is placed first followed by footnotes. Note that they are arranged one per line as follows:</p>
+<pre><code>~
 c/3 2 கொரி 4:6
 c/6-8 2 பேது 3:5
 c/26 1 கொரி 11:7
 c/27 மத் 19:4; மாற் 10:6
 c/27-28 தொநூ 5:1-2
 f/27 ‘ஆதாம்’ என்பது எபிரேய பாடம்
-~
-</code>
-			</pre>
-
-
+~</code></pre>
 		</div>
 	</section>
 			<!-- Footer -->

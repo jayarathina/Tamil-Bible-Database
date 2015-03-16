@@ -4,8 +4,14 @@
 	text-align: center;
 }
 
+h3>small{
+	font-size: medium;
+	font-weight: lighter;
+	font-style: oblique;
+}
+
 .para {
-	text-indent: 15%; /* Was previously 2.5em */
+	text-indent: 15%;
 	text-align: justify;
 }
 

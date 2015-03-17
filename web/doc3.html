@@ -100,22 +100,21 @@ $("#ld1").addClass("loader");
 				<li>And difference tab to see the difference between the source text and the edited text</li>
 			</ul>
 			<blockquote>WARNING: Viewing difference for very large chapters might crash some old browsers or make it unresponsive. Save your code locally before viewing difference.</blockquote>
-			<p>
+			<p id='editorButtons'>
 				The edit tab contains these buttons:<br /> <img src="webincludes/images/edit1.jpg" alt="" />
-
 			</p>
 
-			<ul>
-				<li>4. The last button, ie., the <code>abandon button</code>, will free up the chapter for others to edit. Your edits will be lost. Please note that even partial edits can be submitted for review.</li>
-				<li>3. <code>Discard changes</code> button will restore the original untouched mark-up in the text box so you can start over again.</li>
-				<li>2. <code>Save locally</code> button will save a local copy of your edits in your browser. This feature can be used to restore edits in between sessions,
-				in case of a browser crash. Please note that this does not automatically save, you have to manually do it.
-				This feature requires <a href='http://caniuse.com/#feat=namevalue-storage' target='_blank'>a browses that supports local storage</a>.
-				And most importantly if you abandon, logout, clear your browser cache, or *have logged in on a different machine* your edits saved locally on a machine will be lost.
+			<ol>
+				<li><code>Expand Abbreviation</code> button is used to expand short code abbreviation for making editing faster. This button can also be accessed thru the keyboard short cut <code>ctrl+E</code>. Along with expansion, this button also does housekeeping stuff like trimming white-spaces, removing blank lines etc., Please see Documentation <a href='doc4.html'>Part 4 - Punctuation</a> for more details on what is being expanded in here.</li>
+				<li><code>Save locally</code> button will save a local copy of your edits in your browser. This button can also be accessed thru the keyboard short cut <code>ctrl+S</code>. This feature can be used to restore edits in between sessions, in case of a browser crash. Please note that this does not automatically save, you have to manually do it. This feature requires <a href='http://caniuse.com/#feat=namevalue-storage' target='_blank'>a browses that supports local storage</a>. And most importantly if you abandon, logout, clear your browser cache, or someone else logs in with a different account, then your locally saved edits will be lost.</li>
+				<li><code>Discard changes</code> button will restore the original untouched mark-up in the text box so you can start over again.</li>
+				<li>The fourth button, ie., the <code>abandon button</code>, will free up the chapter for others to edit. Your edits will be lost. Please note that even partial edits can be submitted for review.</li>
+				<li>The fifth button is a toggle button, used to enable or disable Tamil input into the text area.
+				
+				This button can also be accessed thru the keyboard short cut <code>ctrl+M</code>. This has the <a href='https://www.mediawiki.org/wiki/Help:Extension:UniversalLanguageSelector/Input_methods/ta-transliteration' target='_blank'>standard Tamil phonetic keyboard layout</a>. (i.e amma => அம்மா)
+				
 				</li>
-				<li>1. Expand Abbreviation button is used to expand most commonly used abbreviation. Please see Documentation <a href='doc4.html'>Part 4 - Punctuation</a> for more details on what is being expanded in here.
-				</li>
-			</ul>
+			</ol>
 
 			<div class="3u">
 				<span class="image fit"><img src="webincludes/images/edit3.jpg" alt=""></span>
@@ -126,8 +125,8 @@ $("#ld1").addClass("loader");
 				Note that the submit for review button is available at the bottom of the preview tab.<br /> You can submit even partial edits.
 			</blockquote>
 
-			<p>Rest of the website is explanatory. If you are stuck at something, please let me know.</p>
-			<p>Oh, one more thing, your user profile picture is taken from Gravatar. If you don't know what it means, no problem as it is not needed for using this website.</p>
+			<p>Rest of the website is self explanatory. If you are stuck at something, please let me know.</p>
+			<p>Oh, one more thing, your user profile picture is taken from Gravatar.</p>
 
 		</div>
 	</section>

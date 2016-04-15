@@ -1,4 +1,4 @@
-This folder contains MySQL Dump of tables. The whole database table is available in `bible.sql` as a single file.
+This folder contains MySQL Dump of tables. 
 
 #Tables
 * `t_book_key.sql` - Intro text, Book name for each book in the bible.
@@ -6,4 +6,4 @@ This folder contains MySQL Dump of tables. The whole database table is available
 * `t_verseheaders` - Contains headers
 * `t_redletter.sql` - Contains instructions for colouring the words spoken by Christ in red.
 * `t_crossref.sql` and `t_footnotes` - Contains cross-ref and footnotes of the bible
-* `t_parabreak.sql` - Contains the verse numbers where para break occurs
+* `mybibleview_dyn` - Contains view definition for merging all the above table in production

@@ -1,6 +1,21 @@
 @charset "UTF-8";
 
-.chapter h1, h2, h3 {
+del {
+	background: #fadad7;
+	color: #b30000;
+}
+
+ins {
+	background: #eaf2c2;
+	color: #406619;
+}
+
+del, ins{
+	text-decoration: none;
+	font-size: large;
+}
+
+.chapter > h1, .chapter > h2, .chapter > h3 {
 	text-align: center;
 }
 
@@ -10,9 +25,12 @@ h3>small{
 	font-style: oblique;
 }
 
+
 .para {
 	text-indent: 15%;
 	text-align: justify;
+	line-height: 200%;
+	font-size: medium;
 }
 
 .verse{
@@ -32,7 +50,7 @@ h3>small{
 }
 
 .indent {
-	margin-left: 4em; /* 2em; */
+	margin-left: 4em;
 	display:block;
 	text-indent: 0em;
 }
@@ -104,40 +122,3 @@ h3>small{
 	}
 
 }
-
-/* For verse highlight
-div.chapterNavBx>a {
-	margin: 0 15px 0 10px;
-	width: 14px;
-	text-align: center;
-	display: inline-block;
-}
-
-div.chapterNavBx {
-	width: 900px;
-	margin: 0px auto;
-}
-
-span.verse>.poem {
-	margin: 0px auto;
-	width: 550px;
-}
-
-.indent>.verseNum {
-	color: red;
-	position: absolute;
-	margin-left: -3em;
-}
-
-.verse:hover span {
-	background-color: #EEEEEE;
-}
-
-.verse span:hover {
-	background-color: #EEEEEE;
-}
-
-.verse:hover {
-	background-color: #EEEEEE;
-}
-*/

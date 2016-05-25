@@ -1,6 +1,6 @@
 <?php
 /**
- * Resurns book name and total chapters in a book
+ * Resurns book name and total chapters in a book. This function is too slow. So a static array is declared below.
  *
  * @param string $bkNo - Books number
  * @return string[] the Name, Start Chapter and Total Chapters of a Book

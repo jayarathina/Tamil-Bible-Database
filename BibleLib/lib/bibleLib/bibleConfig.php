@@ -1,6 +1,7 @@
 <?php
 
 const BLIB_DB_VERSION = '2.0';
+const DEBUG_APP = FALSE; //Is it in bebug mode?
 
 // Names of the tables where tables are retrived
 const BLIB_INDEX = "t_bookkey";
@@ -18,7 +19,7 @@ const BLIB_RED_LTR = true; // Should Jesuss' words be colored?
                            
 // Tags in Database
 const BLIB_BREAK_PT = '§'; // {br}';
-const BLIB_PARA_BK = '⒫'; // {pb}; UPDATE `t_verses` SET `verse`=concat(`verse`, '⒫' ) WHERE id in (select t_parabreak.id from t_parabreak)
+const BLIB_PARA_BK = '⒫'; // {pb};
 const BLIB_TITLE_PT = '⒯'; // {t}';
 const BLIB_HEADER_PT = '⒣'; // {h}';
 

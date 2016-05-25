@@ -1,24 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.3.4
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Mar 11, 2015 at 04:18 PM
--- Server version: 5.6.20
--- PHP Version: 5.5.15
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `bible`
---
 
 -- --------------------------------------------------------
 
@@ -26,7 +5,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `t_redletter`
 --
 
-CREATE TABLE IF NOT EXISTS `t_redletter` (
+CREATE TABLE `t_redletter` (
   `id_from` int(8) NOT NULL,
   `id_to` int(8) DEFAULT NULL,
   `inst` varchar(3) COLLATE utf8_unicode_ci NOT NULL
@@ -552,17 +531,3 @@ INSERT INTO `t_redletter` (`id_from`, `id_to`, `inst`) VALUES
 (53010015, NULL, ''),
 (53018009, 53018010, ''),
 (53023011, NULL, '');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `t_redletter`
---
-ALTER TABLE `t_redletter`
-  ADD PRIMARY KEY (`id_from`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

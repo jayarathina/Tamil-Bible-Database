@@ -23,6 +23,11 @@ h2, h3 {
 	margin: 0px;
 }
 
+.bold-red {
+    color: red;
+    font-weight: bold;
+}
+
 blockquote > h3,
 blockquote > h4{
 	text-align: center;

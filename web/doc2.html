@@ -46,7 +46,7 @@ $("#ld1").addClass("loader");
 		
 		<header class="major">
 <h4 style='text-align: center;'>Documentation</h4>
-<p class='menu'><a href='doc1.html'>Introduction</a> | Mark-up Syntax | <a href='doc3.html'>Web App Usage Intro</a> | <a href='doc4.html'>Punctuation</a> | <a href='doc5.html'>Cheat sheet</a></p>
+<p class='menu'><a href='doc1.html'>Introduction</a> | Mark-up Syntax | <a href='doc3.html'>Web App Usage Intro</a> | <a href='doc4.html'>Punctuation</a> | <a href='doc5.html'>Cheat sheet</a> | <a href='doc6.html'>Known Errors</a></p>
 </header>
 			<header class="major">
 				<h4>Part 2 - Mark-up</h4>
@@ -105,17 +105,26 @@ Some more comments I guess...
 			</header>
 
 			<p>
-				Para Breaks are denoted by
-				<code>{br}</code>
-				placed next to the verse after which a para break should occour. Note the tilde symbol in the code, they are not part of the verse but a seperate section on their own. The para breaks for this database is taken from ESV bible. Which is not the same as the one TNBCLC has used. Some places ESV divisions are great, but in some other places TNBCLC divisions are great. Use your own judgement on whether to leave the existing para-break or modify it.
+				Para Breaks are denoted by <code>{br}</code> or by inline element <code>{p}</code>. 
+				
+				The easiest and the fastest way to insert Para Breaks are by placing <code>{p}</code> at the desired location.
+				
+				
+				But <code>{br}</code> can also be placed next to the verse after which a para break should occour. Note the tilde symbol in the code, they are not part of the verse but a seperate section on their own.This method is highly discouraged.
 			</p>
 			<pre>
-				<code>
+				<code>~
+v/1
+தொடக்கத்தில் கடவுள் விண்ணுலகையும், மண்ணுலகையும் படைத்தபொழுது,{p}
 ~
 {br}
 ~
 </code>
 			</pre>
+
+			<p>
+			</p>
+			
 			<hr />
 			<header>
 				<h3>Mark-up Verse</h3>
@@ -125,8 +134,7 @@ Some more comments I guess...
 				<code>~
 v/1
 தொடக்கத்தில் கடவுள் விண்ணுலகையும், மண்ணுலகையும் படைத்தபொழுது,
-~
-</code>
+~</code>
 			</pre>
 			<ul>
 				<li>Here <code>v/1</code> - Here the letter V denotes that the following line is a verse. The number that follows after the slash denotes that it is <i>Verse number 1</i>.
@@ -337,6 +345,14 @@ c/27 மத் 19:4; மாற் 10:6
 c/27-28 தொநூ 5:1-2
 f/27 ‘ஆதாம்’ என்பது எபிரேய பாடம்
 ~</code></pre>
+
+			<p>Note that for some, you might want to add coustom footnot reference: <code>1:1d-k எஸ் (கி) 10:3 a-f.</code> This can be achieved by using square brackets: </p>
+			<pre><code>~
+c/1 [1:1d-k] எஸ் (கி) 10:3 a-f.
+~</code></pre>
+			<p>Eventhough this will not render properly in the preview tab, this will be correctly saved in the database.</p>
+
+
 		</div>
 	</section>
 			<!-- Footer -->

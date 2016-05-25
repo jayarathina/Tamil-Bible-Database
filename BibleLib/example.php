@@ -6,10 +6,12 @@
 <link rel="stylesheet" href="chapter.css" />
 
 <?php
+const DB_NAME = 'YOURDBNAME';
+const DB_HOST = 'localhost';
+const DB_USER = 'root';
+const DB_PASSWORD = '';
 
-require_once 'config.php';
 require_once 'lib/medoo.php';
-
 require_once 'lib/bibleLib/bibleConfig.php';
 require_once 'lib/bibleLib/redletter.php';
 require_once 'lib/bibleLib/bibleLib.php';

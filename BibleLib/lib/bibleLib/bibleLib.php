@@ -1,8 +1,4 @@
 <?php
-
-require_once 'bibleConfig.php';
-require_once 'redletter.php';
-
 class bibleLib {
 	protected $database;
 	function __construct($db_ = null) {
@@ -26,6 +22,14 @@ class bibleLib {
 			$this->database = $db_;
 		}
 	}
+	
+	/**
+	 * Returns formated HTML code for the given chapetr in the given book.
+	 *
+	 * @param int $bk - Book Number
+	 * @param string|int $ch - Chapter number
+	 * @return string HTML text of the chapter
+	 */
 	function getChapterHTML($bk, $ch = 'i') {
 		$vd = $this->convertBkCh2Code ( $bk, $ch );
 		
@@ -119,7 +123,13 @@ class bibleLib {
 			return $chap;
 		}
 	}
-	function moveBeforeVerseNumber(&$chap, $replaceArray) {
+	/**
+	 * Returns certain internal tags before verse number so that they can be merged, if possible.
+	 *
+	 * @param string $chap
+	 * @param string[] $replaceArray
+	 */
+	private function moveBeforeVerseNumber(&$chap, $replaceArray) {
 		$vrsNumPattern = BLIB_VRS_START . '(' . BLIB_VERSE_NUMBER_START . '\d+[\-\d]*' . BLIB_VERSE_NUMBER_END . ')';
 		
 		// Move red letter to outermost end.
@@ -133,7 +143,13 @@ class bibleLib {
 			$chap = preg_replace ( "/$pattern/um", $value . BLIB_VRS_START . '$1', $chap );
 		}
 	}
-	function getFormatedVerses($vd) {
+	/**
+	 * Returns formated verses after retriving it from database
+	 *
+	 * @param string $vd - Properly formated/padded verse code;
+	 * @return string - Formatted verses
+	 */
+	private function getFormatedVerses($vd) {
 		$ret = BLIB_P_START; // Return Value
 		
 		$vers = $this->database->select ( BLIB_VIEW, '*', array (
@@ -194,7 +210,16 @@ class bibleLib {
 		
 		return $ret;
 	}
-	function seperateVerse($no, $vrs) {
+	
+	/**
+	 * It tags (Not HTML tags) verses (continious et al.) so that it can be properly tagged.
+	 *
+	 * @param string $no - Verse Number
+	 * @param string $vrs - Verse Text
+	 * @return string Formated bible verse
+	 *        
+	 */
+	private function seperateVerse($no, $vrs) {
 		$this->SwapConsecutiveCharacters ( BLIB_PARA_BK, BLIB_RED_LTR_END, $vrs ); // If red lettering is next to a parabreak then swap. Mat 5:11
 		
 		if (empty ( $vrs ))
@@ -230,7 +255,13 @@ class bibleLib {
 		
 		return $vrs;
 	}
-	function seperateHeader($hdr) {
+	/**
+	 * Tags (Not HTML tags) header according to its level.
+	 *
+	 * @param string $hdr Contains header with breakpoints for each level, as stored in database
+	 * @return string Properly tagged (Not HTML tags) headder
+	 */
+	private function seperateHeader($hdr) {
 		if (empty ( $hdr ))
 			return '';
 		
@@ -258,7 +289,7 @@ class bibleLib {
 	 * @param $bkCh - Book and Chapter number for which CrossRef / FootNote is generated
 	 * @return string The footnote or crossref bock
 	 */
-	function formatCrossRefandFootNote($type, $bkCh) {
+	private function formatCrossRefandFootNote($type, $bkCh) {
 		$ret = '';
 		
 		$table = constant ( "BLIB_$type" );
@@ -314,13 +345,25 @@ class bibleLib {
 	}
 	
 	/**
+	 * Swaps the positions of two consecutive strings
+	 *
+	 * @param string $first
+	 * @param string $second
+	 * @param string $chap - The output is stored in this variable
+	 * @return The parameter $chap with modified string
+	 */
+	private function SwapConsecutiveCharacters($first, $second, &$chap) { // swap Consecutive Characters ab -> ba within a string.
+		$chap = str_replace ( $first . $second, $second . $first, $chap );
+	}
+	
+	/**
 	 *
 	 * @param $bk - Book Number
 	 * @param $ch - Chapter Number
 	 * @param $vs - Verse Number
 	 * @return string - Formated book, chapter and verse code
 	 */
-	function convertBkChVS2Code($bk, $ch, $vs) {
+	public function convertBkChVS2Code($bk, $ch, $vs) {
 		$code = str_pad ( $bk, 2, '0', STR_PAD_LEFT ) . str_pad ( $ch, 3, '0', STR_PAD_LEFT ) . str_pad ( $vs, 3, '0', STR_PAD_LEFT );
 		return str_replace ( '00i000', 'i', $code );
 	}
@@ -331,7 +374,7 @@ class bibleLib {
 	 * @param $ch - Chapter Number
 	 * @return string - Formated book and chapter code
 	 */
-	function convertBkCh2Code($bk, $ch) {
+	public function convertBkCh2Code($bk, $ch) {
 		$code = str_pad ( $bk, 2, '0', STR_PAD_LEFT ) . str_pad ( $ch, 3, '0', STR_PAD_LEFT );
 		return str_replace ( '00i', 'i', $code );
 	}
@@ -339,29 +382,9 @@ class bibleLib {
 	/**
 	 *
 	 * @param $vrs - Properly formated/padded verse code;
-	 * @return string - Reference String.
-	 */
-	function convertCode2Ref($vrs, $type = 1) {
-		if (empty ( $vrs ))
-			return $vrs;
-		
-		$bookNameType = array('tn_f', 'tn_s', 'tn_a', 'tn_o');
-		
-		$bkFrag = $this->convertCode2BkCh($vrs);
-		
-		$bookName = $this->database->get("t_bookkey", $bookNameType[1], [
-				"bn" => $bkFrag[0]
-		]);
-
-		return $bookName . ' ' . $bkFrag[1].':'.$bkFrag[2];
-	}
-	
-	/**
-	 *
-	 * @param $vrs - Properly formated/padded verse code;
 	 * @return string - Array with book, chapter, verse number. <br/> Note: Chapter will be 'i' if it is introduction of a book.
 	 */
-	function convertCode2BkCh($vrs) {
+	public function convertCode2BkCh($vrs) {
 		if (empty ( $vrs ))
 			return $vrs;
 		
@@ -390,15 +413,39 @@ class bibleLib {
 	}
 	
 	/**
-	 * This function swaps the positions of two consecutive strings
+	 * Will convert input into human readable bible eference
 	 *
-	 * @param string $first
-	 * @param string $second
-	 * @param string $chap - The output is stored in this variable
-	 * @return The parameter $chap with modified string
+	 * @param $vrs - Properly formated/padded verse code;
+	 * @param $type - The formating of the book name in return text. Types available are :<br/>
+	 *        0 - Full name eg. யோவான் எழுதிய முதல் திருமுகம் 4:8<br/>
+	 *        1 - Short name eg. 1 யோவான் 4:8 (Default)<br/>
+	 *        2 - Abreviation eg. 1 யோவா 4:8<br/>
+	 *        3 - Old Name eg. அருளப்பர் எழுதிய முதல் திருமுகம் 4:8<br/>
+	 * @return string - Reference String.
 	 */
-	function SwapConsecutiveCharacters($first, $second, &$chap) { // swap Consecutive Characters ab -> ba within a string.
-		$chap = str_replace ( $first . $second, $second . $first, $chap );
+	public function convertCode2Ref($vrs, $type = 1) {
+		if (empty ( $vrs ))
+			return $vrs;
+		
+		$type = intval ( $type ); // For safty
+		
+		$bookNameType = array (
+				'tn_f',
+				'tn_s',
+				'tn_a',
+				'tn_o' 
+		);
+		
+		if ($type >= sizeof ( $bookNameType ))
+			$type = 1;
+		
+		$bkFrag = $this->convertCode2BkCh ( $vrs );
+		
+		$bookName = $this->database->get ( "t_bookkey", $bookNameType [$type], [ 
+				"bn" => $bkFrag [0] 
+		] );
+		
+		return $bookName . ' ' . $bkFrag [1] . ':' . $bkFrag [2];
 	}
 	public $bookList = array (
 			1 => "தொடக்க நூல்",

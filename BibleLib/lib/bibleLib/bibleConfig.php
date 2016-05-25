@@ -1,6 +1,7 @@
 <?php
-
 const BLIB_DB_VERSION = '2.0';
+
+defined ( 'DEBUG_APP' ) or define ( 'DEBUG_APP', FALSE );
 
 // Names of the tables where tables are retrived
 const BLIB_INDEX = "t_bookkey";
@@ -14,14 +15,14 @@ const BLIB_VIEW = "mybibleview";
 // User preferences
 const BLIB_ERR_MSG = 'Something is wrong. Please contact Admin';
 const BLIB_RED_LTR = true; // Should Jesuss' words be colored?
-// TODO Add option for the color of the words here rather than css
+                           // TODO Add option for the color of the words here rather than css
                            
 // Tags in Database
 const BLIB_BREAK_PT = '§'; // {br}';
-const BLIB_PARA_BK = '⒫'; // {pb}; UPDATE `t_verses` SET `verse`=concat(`verse`, '⒫' ) WHERE id in (select t_parabreak.id from t_parabreak)
+const BLIB_PARA_BK = '⒫'; // {pb};
 const BLIB_TITLE_PT = '⒯'; // {t}';
 const BLIB_HEADER_PT = '⒣'; // {h}';
-
+                            
 //
 const BLIB_VERSE_NUMBER_START = '❮';
 const BLIB_VERSE_NUMBER_END = '❯';

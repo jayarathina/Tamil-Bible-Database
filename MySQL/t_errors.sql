@@ -1,24 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: May 25, 2016 at 10:22 AM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.5.30
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `madharas_bible_v2`
---
 
 -- --------------------------------------------------------
 
@@ -90,26 +69,3 @@ INSERT INTO `t_errors` (`slNo`, `Finished`, `id`, `ta_content`, `Comnt`, `BibleY
 (49, 'Yes', 62002009, 'மத் 24:24', 'Crossref missing [Correct in 1994 Version]', '2013'),
 (50, 'Yes', 71001004, 'N/A', 'Verse number 4 is not printed. [Correct in 1994 Version]', '2013'),
 (51, 'Yes', 72001010, '10 உங்களிடம் வருவோர் இப்போதனையை ஏற்காதிருப்பின், அவர்களை உங்கள் இல்லத்திலும் ஏற்றுக்கொள்ள வேண்டாம். <b>அவர்களுக்கு வாழ்த்தும் கூற வேண்டாம்.</b>  11<s>அவர்களுக்கு வாழ்த்தும் கூற வேண்டாம்.</s> அவர்களுக்கு வாழ்த்துக் கூறுவோர் அவர்களுடைய தீச்செயல்களிலும் பங்கு கொள்கிறார்கள்.', 'One sentence from 11 verse is added to 10 verse. [Correct in 1994 Version]', '2013');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `t_errors`
---
-ALTER TABLE `t_errors`
-  ADD PRIMARY KEY (`slNo`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `t_errors`
---
-ALTER TABLE `t_errors`
-  MODIFY `slNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

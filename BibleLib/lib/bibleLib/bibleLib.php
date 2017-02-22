@@ -123,7 +123,6 @@ class bibleLib {
 					BLIB_CROSSREF_END => "</span> " 
 			);
 			$chap = str_replace ( array_keys ( $replaceVals ), $replaceVals, $chap );
-			
 			return $chap;
 		}
 	}
@@ -161,10 +160,10 @@ class bibleLib {
 		
 		$vers = $this->database->select ( BLIB_VIEW, '*', array (
 				'verse_id[~]' => $vd . '%',
-				'ORDER' => array (
-						'verse_id ASC',
-						'type DESC' 
-				) 
+					'ORDER' => array (
+						"verse_id" => "ASC",
+						"type" => "DESC"
+				)
 		) );
 		
 		$inst = array ();

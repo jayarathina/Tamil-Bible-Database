@@ -1,6 +1,8 @@
 <?php
 class bibleLib {
+
 	protected $database;
+
 	function __construct($db_ = null) {
 		if (is_null ( $db_ )) {
 			try { // Meedo http://medoo.in
@@ -22,12 +24,14 @@ class bibleLib {
 			$this->database = $db_;
 		}
 	}
-	
+
 	/**
 	 * Returns formated HTML code for the given chapetr in the given book.
 	 *
-	 * @param int $bk - Book Number
-	 * @param string|int $ch - Chapter number
+	 * @param int $bk
+	 *        	- Book Number
+	 * @param string|int $ch
+	 *        	- Chapter number
 	 * @return string HTML text of the chapter
 	 */
 	function getChapterHTML($bk, $ch = 'i') {
@@ -123,11 +127,12 @@ class bibleLib {
 			return $chap;
 		}
 	}
+
 	/**
 	 * Returns certain internal tags before verse number so that they can be merged, if possible.
 	 *
-	 * @param string $chap
-	 * @param string[] $replaceArray
+	 * @param string $chap        	
+	 * @param string[] $replaceArray        	
 	 */
 	private function moveBeforeVerseNumber(&$chap, $replaceArray) {
 		$vrsNumPattern = BLIB_VRS_START . '(' . BLIB_VERSE_NUMBER_START . '\d+[\-\d]*' . BLIB_VERSE_NUMBER_END . ')';
@@ -143,10 +148,12 @@ class bibleLib {
 			$chap = preg_replace ( "/$pattern/um", $value . BLIB_VRS_START . '$1', $chap );
 		}
 	}
+
 	/**
 	 * Returns formated verses after retriving it from database
 	 *
-	 * @param string $vd - Properly formated/padded verse code;
+	 * @param string $vd
+	 *        	- Properly formated/padded verse code;
 	 * @return string - Formatted verses
 	 */
 	private function getFormatedVerses($vd) {
@@ -210,12 +217,14 @@ class bibleLib {
 		
 		return $ret;
 	}
-	
+
 	/**
 	 * It tags (Not HTML tags) verses (continious et al.) so that it can be properly tagged.
 	 *
-	 * @param string $no - Verse Number
-	 * @param string $vrs - Verse Text
+	 * @param string $no
+	 *        	- Verse Number
+	 * @param string $vrs
+	 *        	- Verse Text
 	 * @return string Formated bible verse
 	 *        
 	 */
@@ -255,10 +264,12 @@ class bibleLib {
 		
 		return $vrs;
 	}
+
 	/**
 	 * Tags (Not HTML tags) header according to its level.
 	 *
-	 * @param string $hdr Contains header with breakpoints for each level, as stored in database
+	 * @param string $hdr
+	 *        	Contains header with breakpoints for each level, as stored in database
 	 * @return string Properly tagged (Not HTML tags) headder
 	 */
 	private function seperateHeader($hdr) {
@@ -281,12 +292,14 @@ class bibleLib {
 		
 		return $hdr;
 	}
-	
+
 	/**
 	 * Returns the tagged footnote or cross reference block
 	 *
-	 * @param $type - Can be <code>CROSSREF</code> or <code>FOOTNOTE</code> (Case sensitive).
-	 * @param $bkCh - Book and Chapter number for which CrossRef / FootNote is generated
+	 * @param $type -
+	 *        	Can be <code>CROSSREF</code> or <code>FOOTNOTE</code> (Case sensitive).
+	 * @param $bkCh -
+	 *        	Book and Chapter number for which CrossRef / FootNote is generated
 	 * @return string The footnote or crossref bock
 	 */
 	private function formatCrossRefandFootNote($type, $bkCh) {
@@ -305,9 +318,11 @@ class bibleLib {
 								"id_to[>=]" => $bkCh . '999' 
 						) 
 				),
-				'ORDER' => 'id_from ASC' 
+				"ORDER" => array (
+						"id_from" => "ASC" 
+				) 
 		) );
-		
+				
 		foreach ( $dats as $val ) {
 			if (0 === strpos ( $val ['note'], BLIB_VERSE_NUMBER_START )) { // For verses where tag is continious or has subdivisions
 				$chapRef = explode ( BLIB_VERSE_NUMBER_END, $val ['note'] );
@@ -343,45 +358,52 @@ class bibleLib {
 		
 		return $ret;
 	}
-	
+
 	/**
 	 * Swaps the positions of two consecutive strings
 	 *
-	 * @param string $first
-	 * @param string $second
-	 * @param string $chap - The output is stored in this variable
+	 * @param string $first        	
+	 * @param string $second        	
+	 * @param string $chap
+	 *        	- The output is stored in this variable
 	 * @return The parameter $chap with modified string
 	 */
 	private function SwapConsecutiveCharacters($first, $second, &$chap) { // swap Consecutive Characters ab -> ba within a string.
 		$chap = str_replace ( $first . $second, $second . $first, $chap );
 	}
-	
+
 	/**
 	 *
-	 * @param $bk - Book Number
-	 * @param $ch - Chapter Number
-	 * @param $vs - Verse Number
+	 * @param $bk -
+	 *        	Book Number
+	 * @param $ch -
+	 *        	Chapter Number
+	 * @param $vs -
+	 *        	Verse Number
 	 * @return string - Formated book, chapter and verse code
 	 */
 	public function convertBkChVS2Code($bk, $ch, $vs) {
 		$code = str_pad ( $bk, 2, '0', STR_PAD_LEFT ) . str_pad ( $ch, 3, '0', STR_PAD_LEFT ) . str_pad ( $vs, 3, '0', STR_PAD_LEFT );
 		return str_replace ( '00i000', 'i', $code );
 	}
-	
+
 	/**
 	 *
-	 * @param $bk - Book Number
-	 * @param $ch - Chapter Number
+	 * @param $bk -
+	 *        	Book Number
+	 * @param $ch -
+	 *        	Chapter Number
 	 * @return string - Formated book and chapter code
 	 */
 	public function convertBkCh2Code($bk, $ch) {
 		$code = str_pad ( $bk, 2, '0', STR_PAD_LEFT ) . str_pad ( $ch, 3, '0', STR_PAD_LEFT );
 		return str_replace ( '00i', 'i', $code );
 	}
-	
+
 	/**
 	 *
-	 * @param $vrs - Properly formated/padded verse code;
+	 * @param $vrs -
+	 *        	Properly formated/padded verse code;
 	 * @return string - Array with book, chapter, verse number. <br/> Note: Chapter will be 'i' if it is introduction of a book.
 	 */
 	public function convertCode2BkCh($vrs) {
@@ -411,16 +433,18 @@ class bibleLib {
 		}
 		return $rt;
 	}
-	
+
 	/**
 	 * Will convert input into human readable bible eference
 	 *
-	 * @param $vrs - Properly formated/padded verse code;
-	 * @param $type - The formating of the book name in return text. Types available are :<br/>
-	 *        0 - Full name eg. யோவான் எழுதிய முதல் திருமுகம் 4:8<br/>
-	 *        1 - Short name eg. 1 யோவான் 4:8 (Default)<br/>
-	 *        2 - Abreviation eg. 1 யோவா 4:8<br/>
-	 *        3 - Old Name eg. அருளப்பர் எழுதிய முதல் திருமுகம் 4:8<br/>
+	 * @param $vrs -
+	 *        	Properly formated/padded verse code;
+	 * @param $type -
+	 *        	The formating of the book name in return text. Types available are :<br/>
+	 *        	0 - Full name eg. யோவான் எழுதிய முதல் திருமுகம் 4:8<br/>
+	 *        	1 - Short name eg. 1 யோவான் 4:8 (Default)<br/>
+	 *        	2 - Abreviation eg. 1 யோவா 4:8<br/>
+	 *        	3 - Old Name eg. அருளப்பர் எழுதிய முதல் திருமுகம் 4:8<br/>
 	 * @return string - Reference String.
 	 */
 	public function convertCode2Ref($vrs, $type = 1) {
@@ -441,12 +465,13 @@ class bibleLib {
 		
 		$bkFrag = $this->convertCode2BkCh ( $vrs );
 		
-		$bookName = $this->database->get ( "t_bookkey", $bookNameType [$type], [ 
+		$bookName = $this->database->get ( "t_bookkey", $bookNameType [$type], array (
 				"bn" => $bkFrag [0] 
-		] );
+		) );
 		
 		return $bookName . ' ' . $bkFrag [1] . ':' . $bkFrag [2];
 	}
+
 	public $bookList = array (
 			1 => "தொடக்க நூல்",
 			2 => "விடுதலைப் பயணம்",

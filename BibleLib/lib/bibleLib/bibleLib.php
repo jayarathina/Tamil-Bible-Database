@@ -1,8 +1,6 @@
 <?php
 class bibleLib {
-
 	protected $database;
-
 	function __construct($db_ = null) {
 		if (is_null ( $db_ )) {
 			try { // Meedo http://medoo.in
@@ -24,9 +22,9 @@ class bibleLib {
 			$this->database = $db_;
 		}
 	}
-
+	
 	/**
-	 * Returns formated HTML code for the given chapetr in the given book.
+	 * Returns formated HTML code for the given chapter in the given book.
 	 *
 	 * @param int $bk
 	 *        	- Book Number
@@ -66,19 +64,39 @@ class bibleLib {
 			$this->SwapConsecutiveCharacters ( BLIB_POEM2_START, BLIB_RED_LTR_START, $chap );
 			$this->SwapConsecutiveCharacters ( BLIB_RED_LTR_END, BLIB_POEM2_END, $chap );
 			
-			$this->moveBeforeVerseNumber ( $chap, array (
-					BLIB_INDENT_START,
-					BLIB_OUTDENT_START,
-					BLIB_POEM1_START,
-					BLIB_POEM2_START,
-					BLIB_RED_LTR_START . BLIB_POEM1_START, // 49015009 - If untill this point if red letter is not merged, then it will never be, so undo some changes;
-					BLIB_RED_LTR_START . BLIB_POEM2_START,
-					BLIB_RED_LTR_START . BLIB_INDENT_START 
-			) );
+			// Move red letter to outermost end.
+			$pattern = BLIB_VRS_START . '(' . BLIB_VERSE_NUMBER_START . '\d+[\-\d]*' . BLIB_VERSE_NUMBER_END . ')' . BLIB_RED_LTR_START . '([^' . BLIB_RED_LTR_END . ']*)' . BLIB_RED_LTR_END . BLIB_VRS_END;
+			$chap = preg_replace ( "/$pattern/um", BLIB_RED_LTR_START . BLIB_VRS_START . '$1$2' . BLIB_VRS_END . BLIB_RED_LTR_END, $chap ); // Try to move redlettring above verse so that it can be coupled
+			$chap = str_replace ( BLIB_RED_LTR_END . BLIB_RED_LTR_START, '', $chap );
 			
-			// Needed for fixing multiple verse block quote 49019005- Not needed anymore. But probably will be needed aftwerwards
-			// $chap = str_replace ( BLIB_INDENT_END . BLIB_RED_LTR_END . BLIB_VRS_END . BLIB_VRS_START . BLIB_RED_LTR_START . BLIB_INDENT_START, '', $chap );
-			// $chap = str_replace ( BLIB_INDENT_END . BLIB_VRS_END . BLIB_VRS_START . BLIB_INDENT_START, '', $chap );
+			// Move verse number after indent start and outdent start
+			$pattern = BLIB_VRS_START . '(' . BLIB_VERSE_NUMBER_START . '\d+[\-\d]*' . BLIB_VERSE_NUMBER_END . ')' . BLIB_INDENT_START;
+			$chap = preg_replace ( "/$pattern/um", BLIB_VRS_START . BLIB_INDENT_START . '$1', $chap );
+			$pattern = BLIB_VRS_START . '(' . BLIB_VERSE_NUMBER_START . '\d+[\-\d]*' . BLIB_VERSE_NUMBER_END . ')' . BLIB_OUTDENT_START;
+			$chap = preg_replace ( "/$pattern/um", BLIB_VRS_START . BLIB_OUTDENT_START . '$1', $chap );
+			
+			// Move verse number after poem1 start and poem2 start
+			$pattern = BLIB_VRS_START . '(' . BLIB_VERSE_NUMBER_START . '\d+[\-\d]*' . BLIB_VERSE_NUMBER_END . ')' . BLIB_POEM1_START;
+			$chap = preg_replace ( "/$pattern/um", BLIB_VRS_START . BLIB_POEM1_START . '$1', $chap );
+			$pattern = BLIB_VRS_START . '(' . BLIB_VERSE_NUMBER_START . '\d+[\-\d]*' . BLIB_VERSE_NUMBER_END . ')' . BLIB_POEM2_START;
+			$chap = preg_replace ( "/$pattern/um", BLIB_VRS_START . BLIB_POEM2_START . '$1', $chap );
+			
+			// If untill this point if red letter is not merged, then it will never be, so undo some changes; Need this for 49015009,
+			
+			$pattern_form = BLIB_VRS_START . '(' . BLIB_VERSE_NUMBER_START . '\d+[\-\d]*' . BLIB_VERSE_NUMBER_END . ')' . BLIB_RED_LTR_START;
+			
+			$pattern = $pattern_form . BLIB_POEM1_START;
+			$chap = preg_replace ( "/$pattern/um", BLIB_VRS_START . BLIB_RED_LTR_START . BLIB_POEM1_START . '$1', $chap );
+			
+			$pattern = $pattern_form . BLIB_POEM2_START;
+			$chap = preg_replace ( "/$pattern/um", BLIB_VRS_START . BLIB_RED_LTR_START . BLIB_POEM2_START . '$1', $chap );
+			
+			$pattern = $pattern_form . BLIB_INDENT_START;
+			$chap = preg_replace ( "/$pattern/um", BLIB_VRS_START . BLIB_RED_LTR_START . BLIB_INDENT_START . '$1', $chap );
+			
+			// Needed for fixing multiple verse block quote 49019005
+			$chap = str_replace ( BLIB_INDENT_END . BLIB_RED_LTR_START . BLIB_VRS_END . BLIB_VRS_START . BLIB_RED_LTR_START . BLIB_INDENT_START, '', $chap );
+			$chap = str_replace ( BLIB_INDENT_END . BLIB_VRS_END . BLIB_VRS_START . BLIB_INDENT_START, '', $chap );
 			
 			// Tag Replacements
 			$pattern = '(' . BLIB_H2_START . '[^\(]+)(\([^\)]+\))([^\)]*' . BLIB_H2_END . ')';
@@ -94,8 +112,8 @@ class bibleLib {
 					BLIB_VERSE_NUMBER_START => "<span class='verseNum'>",
 					BLIB_VERSE_NUMBER_END => "</span>",
 					
-					BLIB_VRS_START => " ", // " <div class='verse'>",
-					BLIB_VRS_END => "", // "</div>",
+					BLIB_VRS_START => " <div class='verse'>", // There should be space before here
+					BLIB_VRS_END => "</div>",
 					
 					BLIB_RED_LTR_START => "<div class='redLetter'>",
 					BLIB_RED_LTR_END => "</div>",
@@ -122,32 +140,19 @@ class bibleLib {
 					BLIB_CROSSREF_START => "<span class='crossref'>",
 					BLIB_CROSSREF_END => "</span> " 
 			);
+			
+			// echo '<br/><br/><br/><br/>' . $chap . '<hr/>';
+			
 			$chap = str_replace ( array_keys ( $replaceVals ), $replaceVals, $chap );
+			
+			$chap = str_replace ( '<p></p>', '', $chap );
+			
+			// die();
+			
 			return $chap;
 		}
 	}
-
-	/**
-	 * Returns certain internal tags before verse number so that they can be merged, if possible.
-	 *
-	 * @param string $chap        	
-	 * @param string[] $replaceArray        	
-	 */
-	private function moveBeforeVerseNumber(&$chap, $replaceArray) {
-		$vrsNumPattern = BLIB_VRS_START . '(' . BLIB_VERSE_NUMBER_START . '\d+[\-\d]*' . BLIB_VERSE_NUMBER_END . ')';
-		
-		// Move red letter to outermost end.
-		$pattern = $vrsNumPattern . BLIB_RED_LTR_START . '([^' . BLIB_RED_LTR_END . ']*)' . BLIB_RED_LTR_END . BLIB_VRS_END;
-		$chap = preg_replace ( "/$pattern/um", BLIB_RED_LTR_START . BLIB_VRS_START . '$1$2' . BLIB_VRS_END . BLIB_RED_LTR_END, $chap ); // Try to move redlettring above verse so that it can be coupled
-		$chap = str_replace ( BLIB_RED_LTR_END . BLIB_RED_LTR_START, '', $chap );
-		
-		// Then Proceed
-		foreach ( $replaceArray as $value ) {
-			$pattern = $vrsNumPattern . $value;
-			$chap = preg_replace ( "/$pattern/um", $value . BLIB_VRS_START . '$1', $chap );
-		}
-	}
-
+	
 	/**
 	 * Returns formated verses after retriving it from database
 	 *
@@ -160,10 +165,10 @@ class bibleLib {
 		
 		$vers = $this->database->select ( BLIB_VIEW, '*', array (
 				'verse_id[~]' => $vd . '%',
-					'ORDER' => array (
+				'ORDER' => array (
 						"verse_id" => "ASC",
-						"type" => "DESC"
-				)
+						"type" => "DESC" 
+				) 
 		) );
 		
 		$inst = array ();
@@ -216,7 +221,7 @@ class bibleLib {
 		
 		return $ret;
 	}
-
+	
 	/**
 	 * It tags (Not HTML tags) verses (continious et al.) so that it can be properly tagged.
 	 *
@@ -263,7 +268,7 @@ class bibleLib {
 		
 		return $vrs;
 	}
-
+	
 	/**
 	 * Tags (Not HTML tags) header according to its level.
 	 *
@@ -291,7 +296,7 @@ class bibleLib {
 		
 		return $hdr;
 	}
-
+	
 	/**
 	 * Returns the tagged footnote or cross reference block
 	 *
@@ -321,7 +326,7 @@ class bibleLib {
 						"id_from" => "ASC" 
 				) 
 		) );
-				
+		
 		foreach ( $dats as $val ) {
 			if (0 === strpos ( $val ['note'], BLIB_VERSE_NUMBER_START )) { // For verses where tag is continious or has subdivisions
 				$chapRef = explode ( BLIB_VERSE_NUMBER_END, $val ['note'] );
@@ -357,7 +362,7 @@ class bibleLib {
 		
 		return $ret;
 	}
-
+	
 	/**
 	 * Swaps the positions of two consecutive strings
 	 *
@@ -370,7 +375,7 @@ class bibleLib {
 	private function SwapConsecutiveCharacters($first, $second, &$chap) { // swap Consecutive Characters ab -> ba within a string.
 		$chap = str_replace ( $first . $second, $second . $first, $chap );
 	}
-
+	
 	/**
 	 *
 	 * @param $bk -
@@ -385,7 +390,7 @@ class bibleLib {
 		$code = str_pad ( $bk, 2, '0', STR_PAD_LEFT ) . str_pad ( $ch, 3, '0', STR_PAD_LEFT ) . str_pad ( $vs, 3, '0', STR_PAD_LEFT );
 		return str_replace ( '00i000', 'i', $code );
 	}
-
+	
 	/**
 	 *
 	 * @param $bk -
@@ -398,7 +403,7 @@ class bibleLib {
 		$code = str_pad ( $bk, 2, '0', STR_PAD_LEFT ) . str_pad ( $ch, 3, '0', STR_PAD_LEFT );
 		return str_replace ( '00i', 'i', $code );
 	}
-
+	
 	/**
 	 *
 	 * @param $vrs -
@@ -432,7 +437,7 @@ class bibleLib {
 		}
 		return $rt;
 	}
-
+	
 	/**
 	 * Will convert input into human readable bible eference
 	 *
@@ -470,7 +475,81 @@ class bibleLib {
 		
 		return $bookName . ' ' . $bkFrag [1] . ':' . $bkFrag [2];
 	}
-
+	
+	/**
+	 * Simple function to search database.
+	 * This is not perfect. It has many limitation because of formating chars
+	 * present in verse as it uses view
+	 *
+	 * @param unknown $keywrd
+	 *        	- Key word to search
+	 * @param number $returnRecordsCount
+	 *        	- How many results to return (For pagination)
+	 * @param number $page
+	 *        	- Which page results (For pagination)
+	 * @param string $fromVs
+	 *        	- Search from this book/verse
+	 * @param string $toVs
+	 *        	- Search upto this book/verse
+	 * @return - Search results in an array [1] and array [0] contains total search results available
+	 */
+	public function searchBible($keywrd, $returnRecordsCount = 10, $page = 1, $fromVs = '00000000', $toVs = '75999999') {
+		if (intval ( $toVs ) < intval ( $fromVs )) {
+			$fromVs ^= $toVs ^= $fromVs ^= $toVs;
+		}
+		
+		$dat = $this->database->select ( BLIB_VIEW, "*", [ 
+				"AND" => [ 
+						"verse_id[<>]" => [ 
+								$fromVs,
+								$toVs 
+						],
+						"txt[~]" => $keywrd,
+						'type' => 'v' 
+				],
+				"LIMIT" => [ 
+						($page - 1) * $returnRecordsCount,
+						$returnRecordsCount 
+				] 
+		] );
+		
+		$tags = [ 
+				BLIB_TITLE_PT,
+				BLIB_HEADER_PT,
+				BLIB_POEM1_START,
+				BLIB_POEM1_END,
+				BLIB_POEM2_START,
+				BLIB_POEM2_END,
+				BLIB_POEM_BREAK,
+				BLIB_INDENT_START,
+				BLIB_INDENT_END,
+				BLIB_OUTDENT_START,
+				BLIB_OUTDENT_END 
+		
+		];
+		
+		foreach ( $dat as &$value ) {
+			$value ['txt'] = str_replace ( $tags, '', $value ['txt'] );
+			$value ['txt'] = str_replace ( BLIB_BREAK_PT, ' ', $value ['txt'] );
+			$value ['txt'] = str_replace ( BLIB_PARA_BK, ' ', $value ['txt'] );
+		}
+		
+		$datCnt = $this->database->count ( BLIB_VIEW, "*", array (
+				"AND" => array (
+						'verse_id[<>]' => [ 
+								$fromVs,
+								$toVs 
+						],
+						'txt[~]' => $keywrd,
+						'type' => 'v' 
+				) 
+		) );
+		$dats = [ 
+				$datCnt,
+				$dat 
+		];
+		return $dats;
+	}
 	public $bookList = array (
 			1 => "தொடக்க நூல்",
 			2 => "விடுதலைப் பயணம்",

@@ -11,10 +11,10 @@ const DB_HOST = 'localhost';
 const DB_USER = 'root';
 const DB_PASSWORD = '';
 
-require_once 'lib/medoo.php';
-require_once 'lib/bibleLib/bibleConfig.php';
-require_once 'lib/bibleLib/redletter.php';
-require_once 'lib/bibleLib/bibleLib.php';
+require_once 'lib/Medoo.php';
+require_once 'lib/BibleLib/bibleConfig.php';
+require_once 'lib/BibleLib/redletter.php';
+require_once 'lib/BibleLib/bibleLib.php';
 
 $bLib = new bibleLib ();
 
@@ -31,4 +31,10 @@ echo '<hr/>';
 
 echo $bLib->convertCode2Ref ( '71004008', 0 ) . '<br/>'; // Will convert input into human readable bible eference => விடுதலைப் பயணம் 5:6
 echo '<hr/>';
+
+echo '<pre>';
+print_r( $bLib->searchBible('% அம்மா %') );
+
+ // Will convert input into human readable bible eference => விடுதலைப் பயணம் 5:6
+echo '</pre><br/><hr/>';
 

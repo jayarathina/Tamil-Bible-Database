@@ -1,20 +1,5 @@
 @charset "UTF-8";
 
-del {
-	background: #fadad7;
-	color: #b30000;
-}
-
-ins {
-	background: #eaf2c2;
-	color: #406619;
-}
-
-del, ins{
-	text-decoration: none;
-	font-size: large;
-}
-
 .chapter > h1, .chapter > h2, .chapter > h3 {
 	text-align: center;
 }

@@ -1,6 +1,8 @@
 <?php
 class bibleLib {
+
 	protected $database;
+
 	function __construct($db_ = null) {
 		if (is_null ( $db_ )) {
 			try { // Meedo http://medoo.in
@@ -22,7 +24,7 @@ class bibleLib {
 			$this->database = $db_;
 		}
 	}
-	
+
 	/**
 	 * Returns formated HTML code for the given chapter in the given book.
 	 *
@@ -152,7 +154,7 @@ class bibleLib {
 			return $chap;
 		}
 	}
-	
+
 	/**
 	 * Returns formated verses after retriving it from database
 	 *
@@ -221,7 +223,7 @@ class bibleLib {
 		
 		return $ret;
 	}
-	
+
 	/**
 	 * It tags (Not HTML tags) verses (continious et al.) so that it can be properly tagged.
 	 *
@@ -268,7 +270,7 @@ class bibleLib {
 		
 		return $vrs;
 	}
-	
+
 	/**
 	 * Tags (Not HTML tags) header according to its level.
 	 *
@@ -296,7 +298,7 @@ class bibleLib {
 		
 		return $hdr;
 	}
-	
+
 	/**
 	 * Returns the tagged footnote or cross reference block
 	 *
@@ -362,7 +364,7 @@ class bibleLib {
 		
 		return $ret;
 	}
-	
+
 	/**
 	 * Swaps the positions of two consecutive strings
 	 *
@@ -375,7 +377,7 @@ class bibleLib {
 	private function SwapConsecutiveCharacters($first, $second, &$chap) { // swap Consecutive Characters ab -> ba within a string.
 		$chap = str_replace ( $first . $second, $second . $first, $chap );
 	}
-	
+
 	/**
 	 *
 	 * @param $bk -
@@ -390,7 +392,7 @@ class bibleLib {
 		$code = str_pad ( $bk, 2, '0', STR_PAD_LEFT ) . str_pad ( $ch, 3, '0', STR_PAD_LEFT ) . str_pad ( $vs, 3, '0', STR_PAD_LEFT );
 		return str_replace ( '00i000', 'i', $code );
 	}
-	
+
 	/**
 	 *
 	 * @param $bk -
@@ -403,7 +405,7 @@ class bibleLib {
 		$code = str_pad ( $bk, 2, '0', STR_PAD_LEFT ) . str_pad ( $ch, 3, '0', STR_PAD_LEFT );
 		return str_replace ( '00i', 'i', $code );
 	}
-	
+
 	/**
 	 *
 	 * @param $vrs -
@@ -437,7 +439,7 @@ class bibleLib {
 		}
 		return $rt;
 	}
-	
+
 	/**
 	 * Will convert input into human readable bible eference
 	 *
@@ -469,13 +471,13 @@ class bibleLib {
 		
 		$bkFrag = $this->convertCode2BkCh ( $vrs );
 		
-		$bookName = $this->database->get ( "t_bookkey", $bookNameType [$type], array (
+		$bookName = $this->database->get ( BLIB_INDEX, $bookNameType [$type], array (
 				"bn" => $bkFrag [0] 
 		) );
 		
 		return $bookName . ' ' . $bkFrag [1] . ':' . $bkFrag [2];
 	}
-	
+
 	/**
 	 * Simple function to search database.
 	 * This is not perfect. It has many limitation because of formating chars
@@ -525,8 +527,8 @@ class bibleLib {
 				BLIB_INDENT_END,
 				BLIB_OUTDENT_START,
 				BLIB_OUTDENT_END 
-		
-		];
+		]
+		;
 		
 		foreach ( $dat as &$value ) {
 			$value ['txt'] = str_replace ( $tags, '', $value ['txt'] );
@@ -550,6 +552,7 @@ class bibleLib {
 		];
 		return $dats;
 	}
+
 	public $bookList = array (
 			1 => "தொடக்க நூல்",
 			2 => "விடுதலைப் பயணம்",

@@ -6,9 +6,13 @@
 <link rel="stylesheet" href="chapter.css" />
 
 <?php
+
 const DB_NAME = 'YOURDBNAME';
+
 const DB_HOST = 'localhost';
+
 const DB_USER = 'root';
+
 const DB_PASSWORD = '';
 
 require_once 'lib/Medoo.php';
@@ -33,8 +37,8 @@ echo $bLib->convertCode2Ref ( '71004008', 0 ) . '<br/>'; // Will convert input i
 echo '<hr/>';
 
 echo '<pre>';
-print_r( $bLib->searchBible('% அம்மா %') );
+print_r ( $bLib->searchBible ( '% அம்மா %' ) );
 
- // Will convert input into human readable bible eference => விடுதலைப் பயணம் 5:6
+// Will convert input into human readable bible eference => விடுதலைப் பயணம் 5:6
 echo '</pre><br/><hr/>';
 

@@ -75,4 +75,5 @@ INSERT INTO `t_errors` (`id`, `ta_content`, `Comnt`, `BibleYr`) VALUES
 (18009027, 'புக<s>ழ்</s><b>ல்</b>வேனாயினும்', 'Spelling Mistake\r\n', '2013'),
 (18010005, '...அ<b>னை</b>யவோ', 'Spelling Mistake', '2013'),
 (20009010, '..திபா <s>1</s>11:10; ...', 'Crossref Mistake\r\n', '2013'),
-(23047013, 'வந்துநின்று<s>ம்</s>', 'Spelling Mistake', '2013');
+(23047013, 'வந்துநின்று<s>ம்</s>', 'Spelling Mistake', '2013'),
+(46001044, '...நடு<em>ங்</em>கும்...', 'Spelling Mistake', '2013');

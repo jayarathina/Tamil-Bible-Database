@@ -372,7 +372,7 @@ class bibleLib {
 	 * @param string $second        	
 	 * @param string $chap
 	 *        	- The output is stored in this variable
-	 * @return The parameter $chap with modified string
+	 * @return string The parameter $chap with modified string
 	 */
 	private function SwapConsecutiveCharacters($first, $second, &$chap) { // swap Consecutive Characters ab -> ba within a string.
 		$chap = str_replace ( $first . $second, $second . $first, $chap );
@@ -483,7 +483,7 @@ class bibleLib {
 	 * This is not perfect. It has many limitation because of formating chars
 	 * present in verse as it uses view
 	 *
-	 * @param unknown $keywrd
+	 * @param string $keywrd
 	 *        	- Key word to search
 	 * @param number $returnRecordsCount
 	 *        	- How many results to return (For pagination)

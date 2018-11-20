@@ -63,7 +63,7 @@ INSERT INTO `t_errors` (`id`, `ta_content`, `Comnt`, `BibleYr`) VALUES
 (38013007, '... என்கிறார் படைகளின் ஆண்டவர். <s>‘</s> <b>“</b>ஆயனை வெட்டு; ...', 'Quotes messed up', '2013'),
 (42002021, '... முன்னேற்றத்தால் மெய்க்காவலர்<s>க்</s> தலைவர்களாகிய அரச அலுவலர்கள் ...', 'Spelling Mistake', '2013'),
 (42009010, '... இவர்கள் எல்லாரும் யூதரின் பகைவனும் பூகை<b>யனா</b>கிய அம்மதாத்தாவின் ...', 'Spelling Mistake', '2013'),
-(56006015, '<s>போ</s>லியார் -> <b>பே</b>லியார்', 'Footnote spelling mistake. Word in English is ''Belial''. [Correct in 1994 Version]', '2013'),
+(56006015, '<s>போ</s>லியார் -> <b>பே</b>லியார்', 'Footnote spelling mistake. Word in English is \'Belial\'. [Correct in 1994 Version]', '2013'),
 (62002009, 'மத் 24:24', 'Crossref missing [Correct in 1994 Version]', '2013'),
 (71001004, 'N/A', 'Verse number 4 is not printed. [Correct in 1994 Version]', '2013'),
 (72001010, '10 உங்களிடம் வருவோர் இப்போதனையை ஏற்காதிருப்பின், அவர்களை உங்கள் இல்லத்திலும் ஏற்றுக்கொள்ள வேண்டாம். <b>அவர்களுக்கு வாழ்த்தும் கூற வேண்டாம்.</b>  11<s>அவர்களுக்கு வாழ்த்தும் கூற வேண்டாம்.</s> அவர்களுக்கு வாழ்த்துக் கூறுவோர் அவர்களுடைய தீச்செயல்களிலும் பங்கு கொள்கிறார்கள்.', 'One sentence from 11 verse is added to 10 verse. [Correct in 1994 Version]', '2013'),

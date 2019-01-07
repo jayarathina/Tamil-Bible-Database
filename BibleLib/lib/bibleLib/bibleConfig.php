@@ -15,7 +15,6 @@ const BLIB_VIEW = "mybibleview";
 // User preferences
 const BLIB_ERR_MSG = 'Something is wrong. Please contact Admin';
 const BLIB_RED_LTR = true; // Should Jesuss' words be colored?
-                           // TODO Add option for the color of the words here rather than css
                            
 // Tags in Database
 const BLIB_BREAK_PT = '§'; // {br}';

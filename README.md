@@ -1,5 +1,5 @@
 # Tamil-Bible-Database
-This is a project to maintain Tamil Ecumenical Bible in Unicode. The aim of this project is to make online Tamil Bible resemble as much as possible to the print edition. More specifically poems and quotations to resemble the print edition. The bible that is used for this purpose is the 2012 edition. To know more about this project, please visit [the project page](http://bible.madharasan.com/live/). You can also like us on [facebook](https://www.facebook.com/Thiruviviliam/).
+This is a project to maintain Tamil Ecumenical Bible in Unicode. The aim of this project is to make online Tamil Bible resemble as much as possible to the print edition. More specifically poems and quotations to resemble the print edition. The bible that is used for this purpose is the 2012 edition. A [live demo](http://bible.madharasan.com/live/toc.html) is available. You can also like us on [facebook](https://www.facebook.com/Thiruviviliam/).
 
 ## Features of this library include
 * A MySQL database.
@@ -29,4 +29,4 @@ SELECT * FROM t_verses WHERE id BETWEEN 01001001 AND 02001005
 ```
 
 ## Suggestions or Comments
-If you find any bug or suggest any improvement, please feel free to raise a pull request or contact me.
+If you find any bug or suggest any improvement, please feel free to raise a pull request or contact me. You can also contribute by proofreading the bible. Check out [our home page](http://bible.madharasan.com/live/) for more information.

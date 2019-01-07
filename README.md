@@ -16,7 +16,14 @@ A live demo is available [here](http://bible.madharasan.com/live/toc.html). You 
 
 ## Points to Note
 * `BibleLib` folder contains PHP library to access and display the database
-* `MySQL` folder contains the table dumps. The table names are self explanatory.
+* `MySQL` folder contains the MySQL dump of tables. 
+  * `t_book_key.sql` - Intro text, Book name for each book in the bible in various formats
+  * `t_verses` - Contains bible verses 
+  * `t_verseheaders` - Contains headers
+  * `t_redletter.sql` - Contains instructions for colouring the words spoken by Christ in red
+  * `t_crossref.sql` and `t_footnotes` - Contains cross-ref and footnotes of the bible
+  * `t_errors.sql` - Contains list of known typographical errors. This list can be found [ here](http://jayarathina.github.io/Tamil-Bible-Database/web/doc6.html)
+  * `mybibleview_dyn` - Contains view definition for merging all the above table in production so that it will be faster to process and retrive information
 * Unicode characters like ❮, ⁾, ₎, ␢, ⦃ and many others are used in the verses stored in the database to enable us to format the verses properly. The complete list can be found in [bibleConfig.php](BibleLib/lib/bibleLib/bibleConfig.php)
 * Please read the comments in the code customising.
 

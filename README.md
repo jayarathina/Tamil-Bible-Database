@@ -38,7 +38,7 @@ Written simply:
 ```mysql
 SELECT * FROM t_verses WHERE id BETWEEN 01001001 AND 02001005
 ```
-## Known Issuse
+## Known Issues
 * Since Unicode characters are in the middle of verses, search function will not work properly if more than one word is used.
 
 ## Suggestions or Comments

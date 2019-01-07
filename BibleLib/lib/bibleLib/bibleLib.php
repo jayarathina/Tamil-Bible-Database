@@ -1,4 +1,6 @@
 <?php
+use Medoo\Medoo;
+
 class bibleLib {
 
 	protected $database;
@@ -192,7 +194,7 @@ class bibleLib {
 					break;
 				case 'V' : // Verse
 					if (0 === strcmp ( 'Same as above', $ver ['txt'] )) {
-						continue;
+						break;
 					}
 					
 					$ver ["txt"] = $redLetter->colorRedLetter ( $ver ["txt"], $ver ["verse_id"] );

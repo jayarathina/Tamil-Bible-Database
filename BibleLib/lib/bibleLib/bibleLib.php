@@ -1,21 +1,20 @@
 <?php
 use Medoo\Medoo;
 
+include_once 'lib/medoo.php';
 class bibleLib {
-
 	protected $database;
-
 	function __construct($db_ = null) {
 		if (is_null ( $db_ )) {
 			try { // Meedo http://medoo.in
-				$this->database = new medoo ( array (
+				$this->database = new medoo ( [ 
 						'database_type' => 'mysql',
 						'database_name' => DB_NAME,
 						'server' => DB_HOST,
 						'username' => DB_USER,
 						'password' => DB_PASSWORD,
 						'charset' => 'utf8' 
-				) );
+				] );
 			} catch ( Exception $e ) {
 				if (DEBUG_APP) {
 					echo 'Caught exception: ', $e->getMessage (), '<br/>';
@@ -26,7 +25,7 @@ class bibleLib {
 			$this->database = $db_;
 		}
 	}
-
+	
 	/**
 	 * Returns formated HTML code for the given chapter in the given book.
 	 *
@@ -41,12 +40,10 @@ class bibleLib {
 		
 		$datas = '';
 		if ($ch === 'i') { // Introduction
-			$intro = $this->database->select ( BLIB_INDEX, array (
-					"intro" 
-			), array (
+			$intro = $this->database->select ( BLIB_INDEX, "intro", [ 
 					"bn" => $bk 
-			) );
-			return (isset ( $intro [0] ['intro'] )) ? $intro [0] ['intro'] : '';
+			] );
+			return (isset ( $intro [0] )) ? $intro [0] : '';
 		} else {
 			
 			$chap = $this->getFormatedVerses ( $vd );
@@ -106,7 +103,7 @@ class bibleLib {
 			$pattern = '(' . BLIB_H2_START . '[^\(]+)(\([^\)]+\))([^\)]*' . BLIB_H2_END . ')';
 			$chap = preg_replace ( "/$pattern/um", '$1<small>$2</small>$3', $chap ); // Add small tag to brackets
 			
-			$replaceVals = array (
+			$replaceVals = [ 
 					BLIB_BREAK_PT => '<br/>',
 					BLIB_H1_START => '<h2>',
 					BLIB_H1_END => '</h2>',
@@ -143,20 +140,15 @@ class bibleLib {
 					
 					BLIB_CROSSREF_START => "<span class='crossref'>",
 					BLIB_CROSSREF_END => "</span> " 
-			);
-			
-			// echo '<br/><br/><br/><br/>' . $chap . '<hr/>';
+			];
 			
 			$chap = str_replace ( array_keys ( $replaceVals ), $replaceVals, $chap );
-			
 			$chap = str_replace ( '<p></p>', '', $chap );
-			
-			// die();
-			
+			$chap = str_replace ( "<div class='para'></div>", '', $chap );
 			return $chap;
 		}
 	}
-
+	
 	/**
 	 * Returns formated verses after retriving it from database
 	 *
@@ -165,26 +157,26 @@ class bibleLib {
 	 * @return string - Formatted verses
 	 */
 	private function getFormatedVerses($vd) {
-		$ret = BLIB_P_START; // Return Value
+		$ret = ''; // Return Value
 		
-		$vers = $this->database->select ( BLIB_VIEW, '*', array (
+		$vers = $this->database->select ( BLIB_VIEW, '*', [ 
 				'verse_id[~]' => $vd . '%',
-				'ORDER' => array (
+				'ORDER' => [ 
 						"verse_id" => "ASC",
 						"type" => "DESC" 
-				) 
-		) );
+				] 
+		] );
 		
-		$inst = array ();
+		$inst = [ ];
 		if (BLIB_RED_LTR) {
-			$inst = $this->database->select ( BLIB_REDLTR, '*', array (
+			$inst = $this->database->select ( BLIB_REDLTR, '*', [ 
 					'id_from[~]' => $vd . '%' 
-			) );
+			] );
 		}
 		
 		$redLetter = new RedLetter ( $inst );
-		$total_ver = count ( $vers );
 		
+		$total_ver = count ( $vers );
 		for($cnt = 0; $cnt < $total_ver; $cnt ++) {
 			$ver = $vers [$cnt];
 			
@@ -203,7 +195,8 @@ class bibleLib {
 						$ret .= $this->seperateVerse ( $ver ["verse_id"], $ver ["txt"] );
 					} else {
 						if ($vers [$cnt + 1] ['type'] !== 'T') {
-							print_r ( $vers [$cnt] );
+							if (DEBUG_APP)
+								print_r ( $vers [$cnt] );
 							die ( 'Title Missing!' );
 						}
 						$tt = explode ( BLIB_TITLE_PT, $vers [++ $cnt] ['txt'] . BLIB_TITLE_PT );
@@ -219,13 +212,12 @@ class bibleLib {
 					break;
 			}
 		}
-		
 		$ret .= $this->formatCrossRefandFootNote ( 'CROSSREF', $vd );
 		$ret .= $this->formatCrossRefandFootNote ( 'FOOTNOTE', $vd );
 		
-		return $ret;
+		return BLIB_P_START . $ret . BLIB_P_END;
 	}
-
+	
 	/**
 	 * It tags (Not HTML tags) verses (continious et al.) so that it can be properly tagged.
 	 *
@@ -237,12 +229,12 @@ class bibleLib {
 	 *        
 	 */
 	private function seperateVerse($no, $vrs) {
-		$this->SwapConsecutiveCharacters ( BLIB_PARA_BK, BLIB_RED_LTR_END, $vrs ); // If red lettering is next to a parabreak then swap. Mat 5:11
-		
 		if (empty ( $vrs ))
 			return '';
 		else
 			$vrs = trim ( $vrs );
+		
+		$this->SwapConsecutiveCharacters ( BLIB_PARA_BK, BLIB_RED_LTR_END, $vrs ); // If red lettering is next to a parabreak then swap. Mat 5:11
 		
 		if (0 === strpos ( $vrs, BLIB_VERSE_NUMBER_START )) { // Continuous Verses
 			$no = explode ( BLIB_VERSE_NUMBER_END, $vrs );
@@ -266,13 +258,13 @@ class bibleLib {
 		$vrs = str_replace ( BLIB_PARA_BK, BLIB_P_END . BLIB_P_START, $vrs );
 		
 		$vrs = BLIB_VRS_START . $vrs . BLIB_VRS_END;
-		$vrs = str_replace ( BLIB_VRS_START . BLIB_VRS_END, '', $vrs );
 		
+		$vrs = str_replace ( BLIB_VRS_START . BLIB_VRS_END, '', $vrs );
 		$vrs = str_replace ( BLIB_P_START . BLIB_P_END, '', $vrs );
 		
 		return $vrs;
 	}
-
+	
 	/**
 	 * Tags (Not HTML tags) header according to its level.
 	 *
@@ -300,7 +292,7 @@ class bibleLib {
 		
 		return $hdr;
 	}
-
+	
 	/**
 	 * Returns the tagged footnote or cross reference block
 	 *
@@ -317,19 +309,19 @@ class bibleLib {
 		$stTag = constant ( "BLIB_{$type}_START" );
 		$edTag = constant ( "BLIB_{$type}_END" );
 		
-		$dats = $this->database->select ( $table, "*", array (
-				"OR" => array (
+		$dats = $this->database->select ( $table, "*", [ 
+				"OR" => [ 
 						"id_from[~]" => $bkCh . '%',
 						"id_to[~]" => $bkCh . '%',
-						"AND" => array (
+						"AND" => [ 
 								"id_from[<=]" => $bkCh . '000',
 								"id_to[>=]" => $bkCh . '999' 
-						) 
-				),
-				"ORDER" => array (
+						] 
+				],
+				"ORDER" => [ 
 						"id_from" => "ASC" 
-				) 
-		) );
+				] 
+		] );
 		
 		foreach ( $dats as $val ) {
 			if (0 === strpos ( $val ['note'], BLIB_VERSE_NUMBER_START )) { // For verses where tag is continious or has subdivisions
@@ -366,12 +358,12 @@ class bibleLib {
 		
 		return $ret;
 	}
-
+	
 	/**
 	 * Swaps the positions of two consecutive strings
 	 *
-	 * @param string $first        	
-	 * @param string $second        	
+	 * @param string $first
+	 * @param string $second
 	 * @param string $chap
 	 *        	- The output is stored in this variable
 	 * @return string The parameter $chap with modified string
@@ -379,7 +371,7 @@ class bibleLib {
 	private function SwapConsecutiveCharacters($first, $second, &$chap) { // swap Consecutive Characters ab -> ba within a string.
 		$chap = str_replace ( $first . $second, $second . $first, $chap );
 	}
-
+	
 	/**
 	 *
 	 * @param $bk -
@@ -394,7 +386,7 @@ class bibleLib {
 		$code = str_pad ( $bk, 2, '0', STR_PAD_LEFT ) . str_pad ( $ch, 3, '0', STR_PAD_LEFT ) . str_pad ( $vs, 3, '0', STR_PAD_LEFT );
 		return str_replace ( '00i000', 'i', $code );
 	}
-
+	
 	/**
 	 *
 	 * @param $bk -
@@ -407,7 +399,7 @@ class bibleLib {
 		$code = str_pad ( $bk, 2, '0', STR_PAD_LEFT ) . str_pad ( $ch, 3, '0', STR_PAD_LEFT );
 		return str_replace ( '00i', 'i', $code );
 	}
-
+	
 	/**
 	 *
 	 * @param $vrs -
@@ -419,7 +411,7 @@ class bibleLib {
 			return $vrs;
 		
 		$vrs = strtolower ( $vrs );
-		$rt = array ();
+		$rt = [ ];
 		
 		if (substr ( $vrs, - 1 ) == 'i') {
 			$vrs = rtrim ( $vrs, "i" );
@@ -427,21 +419,21 @@ class bibleLib {
 			$rt [1] = 'i';
 		} elseif (strlen ( $vrs ) <= 5) {
 			$vrs = str_pad ( $vrs, 5, '0', STR_PAD_LEFT ); // Minimum 5 chars should be available
-			$rt = array (
+			$rt = [ 
 					0 => intval ( substr ( $vrs, 0, 2 ) ),
 					1 => intval ( substr ( $vrs, 2, 3 ) ) 
-			);
+			];
 		} elseif (strlen ( $vrs ) == 8) {
 			$vrs = str_pad ( $vrs, 8, '0', STR_PAD_LEFT ); // Minimum 5 chars should be available
-			$rt = array (
+			$rt = [ 
 					0 => intval ( substr ( $vrs, 0, 2 ) ),
 					1 => intval ( substr ( $vrs, 2, 3 ) ),
 					2 => intval ( substr ( $vrs, 5, 3 ) ) 
-			);
+			];
 		}
 		return $rt;
 	}
-
+	
 	/**
 	 * Will convert input into human readable bible eference
 	 *
@@ -460,26 +452,25 @@ class bibleLib {
 			return $vrs;
 		
 		$type = intval ( $type ); // For safty
-		
-		$bookNameType = array (
+		$bookNameType = [ 
 				'tn_f',
 				'tn_s',
 				'tn_a',
 				'tn_o' 
-		);
+		];
 		
 		if ($type >= sizeof ( $bookNameType ))
 			$type = 1;
 		
 		$bkFrag = $this->convertCode2BkCh ( $vrs );
 		
-		$bookName = $this->database->get ( BLIB_INDEX, $bookNameType [$type], array (
+		$bookName = $this->database->get ( BLIB_INDEX, $bookNameType [$type], [ 
 				"bn" => $bkFrag [0] 
-		) );
+		] );
 		
 		return $bookName . ' ' . $bkFrag [1] . ':' . $bkFrag [2];
 	}
-
+	
 	/**
 	 * Simple function to search database.
 	 * This is not perfect. It has many limitation because of formating chars
@@ -495,7 +486,7 @@ class bibleLib {
 	 *        	- Search from this book/verse
 	 * @param string $toVs
 	 *        	- Search upto this book/verse
-	 * @return - Search results in an array [1] and array [0] contains total search results available
+	 * @return - Search results in an array [1] and array [0] contains total results and the matching verses respectively
 	 */
 	public function searchBible($keywrd, $returnRecordsCount = 10, $page = 1, $fromVs = '00000000', $toVs = '75999999') {
 		if (intval ( $toVs ) < intval ( $fromVs )) {
@@ -516,7 +507,6 @@ class bibleLib {
 						$returnRecordsCount 
 				] 
 		] );
-		
 		$tags = [ 
 				BLIB_TITLE_PT,
 				BLIB_HEADER_PT,
@@ -529,8 +519,7 @@ class bibleLib {
 				BLIB_INDENT_END,
 				BLIB_OUTDENT_START,
 				BLIB_OUTDENT_END 
-		]
-		;
+		];
 		
 		foreach ( $dat as &$value ) {
 			$value ['txt'] = str_replace ( $tags, '', $value ['txt'] );
@@ -538,24 +527,23 @@ class bibleLib {
 			$value ['txt'] = str_replace ( BLIB_PARA_BK, ' ', $value ['txt'] );
 		}
 		
-		$datCnt = $this->database->count ( BLIB_VIEW, "*", array (
-				"AND" => array (
+		$datCnt = $this->database->count ( BLIB_VIEW, "*", [ 
+				"AND" => [ 
 						'verse_id[<>]' => [ 
 								$fromVs,
 								$toVs 
 						],
 						'txt[~]' => $keywrd,
 						'type' => 'v' 
-				) 
-		) );
+				] 
+		] );
 		$dats = [ 
 				$datCnt,
 				$dat 
 		];
 		return $dats;
 	}
-
-	public $bookList = array (
+	public $bookList = [ 
 			1 => "தொடக்க நூல்",
 			2 => "விடுதலைப் பயணம்",
 			3 => "லேவியர்",
@@ -635,7 +623,7 @@ class bibleLib {
 			400 => "இணைத் திருமுறை நூல்கள்",
 			540 => "திருமுகங்கள்",
 			680 => "பொதுத் திருமுகங்கள்" 
-	);
+	];
 }
 
 ?>

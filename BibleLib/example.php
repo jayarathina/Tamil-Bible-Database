@@ -8,11 +8,8 @@
 <?php
 
 const DB_NAME = 'YOURDBNAME';
-
 const DB_HOST = 'localhost';
-
 const DB_USER = 'root';
-
 const DB_PASSWORD = '';
 
 require_once 'lib/Medoo.php';
@@ -27,7 +24,7 @@ echo '<hr/>';
 echo $bLib->getChapterHTML ( 50, 'i' ); // Will return introduction for Mark's Gospel
 echo '<hr/>';
 
-echo $bLib->convertBkChVS2Code ( 2, 5, 6 ); // Will return formatted ID of verse from Book 2 (Exodus), 5:6 => 02005006
+echo $bLib->convertBkChVS2Code ( 2, 5, 6 ); // Will return formatted ID for verse 6 of Chapter 5 from Book 2 (Exodus), 5:6 => 02005006
 echo '<hr/>';
 
 print_r ( $bLib->convertCode2BkCh ( '02005006' ) ); // Will return array with Book number, chapter and verse => Array ( [0] => 2 [1] => 5 [2] => 6 )
@@ -37,8 +34,7 @@ echo $bLib->convertCode2Ref ( '71004008', 0 ) . '<br/>'; // Will convert input i
 echo '<hr/>';
 
 echo '<pre>';
-print_r ( $bLib->searchBible ( '% அம்மா %' ) );
+print_r ( $bLib->searchBible ( '% அம்மா %' ) ); //Simple example search for the term 'அம்மா' 
 
-// Will convert input into human readable bible eference => விடுதலைப் பயணம் 5:6
 echo '</pre><br/><hr/>';
 

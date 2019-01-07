@@ -1,7 +1,7 @@
 # Tamil-Bible-Database
 This is a project to maintain Tamil Ecumenical Bible in Unicode. The aim of this project is to make online Tamil Bible resemble as much as possible to the print edition. More specifically poems and quotations to resemble the print edition. The bible that is used for this purpose is the 2012 edition.
 
-A [live demo](http://bible.madharasan.com/live/toc.html) is available. You can also like us on [facebook](https://www.facebook.com/Thiruviviliam/).
+A live demo is available [here](http://bible.madharasan.com/live/toc.html). You can also like us on [facebook](https://www.facebook.com/Thiruviviliam/).
 
 ## Features of this library include
 * A MySQL database.

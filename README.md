@@ -31,7 +31,7 @@ Written simply:
 SELECT * FROM t_verses WHERE id BETWEEN 01001001 AND 02001005
 ```
 ## Known Issuse
-* Since Unicode characters are in the middle of verses, search function will not work properly if more than on word is used.
+* Since Unicode characters are in the middle of verses, search function will not work properly if more than one word is used.
 
 ## Suggestions or Comments
-If you find any bug or suggest any improvement, please feel free to raise a pull request or contact me. You can also contribute by proofreading the bible. Check out [our home page](http://bible.madharasan.com/live/) for more information.
+If you find any bug or suggest any improvement, please feel free to raise a pull request or contact me. You can also contribute by proof reading the bible. Check out [our home page](http://bible.madharasan.com/live/) for more information.

@@ -9,7 +9,7 @@
  */
 class RedLetter {
 	
-	private $inst = array();
+	private $inst = [];
 	
 	/**
 	 * @param string $inst - Instructions for coloring from DB; (See switch case in colorRedLetter function)

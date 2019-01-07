@@ -25,7 +25,7 @@ A live demo is available [here](http://bible.madharasan.com/live/toc.html). You 
   * `t_errors.sql` - Contains list of known typographical errors. This list can be found [ here](http://jayarathina.github.io/Tamil-Bible-Database/web/doc6.html)
   * `mybibleview_dyn` - Contains view definition for merging all the above table in production so that it will be faster to process and retrive information
 * Unicode characters like ❮, ⁾, ₎, ␢, ⦃ and many others are used in the verses stored in the database to enable us to format the verses properly. The complete list can be found in [bibleConfig.php](BibleLib/lib/bibleLib/bibleConfig.php)
-* Please read the comments in the code customising.
+* Please read the comments in the code defore customizing.
 
 ### Verse ID System
 After a long analysis, I decided to use verse ID system of  [scrollmapper/bible_databases](https://github.com/scrollmapper/bible_databases). It is simpler and more effecient. Each verse is accessed by a unique key, the combination of the BOOK+CHAPTER+VERSE id.

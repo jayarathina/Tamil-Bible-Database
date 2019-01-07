@@ -18,6 +18,7 @@ A live demo is available [here](http://bible.madharasan.com/live/toc.html). You 
 * `BibleLib` folder contains PHP library to access and display the database
 * `MySQL` folder contains the table dumps. The table names are self explanatory.
 * Unicode characters like ❮, ⁾, ₎, ␢, ⦃ and many others are used in the verses stored in the database to enable us to format the verses properly. The complete list can be found in [bibleConfig.php](BibleLib/lib/bibleLib/bibleConfig.php)
+* Please read the comments in the code customising.
 
 ### Verse ID System
 After a long analysis, I decided to use verse ID system of  [scrollmapper/bible_databases](https://github.com/scrollmapper/bible_databases). It is simpler and more effecient. Each verse is accessed by a unique key, the combination of the BOOK+CHAPTER+VERSE id.

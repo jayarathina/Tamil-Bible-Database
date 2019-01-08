@@ -7,7 +7,7 @@ A live demo is available [here](http://bible.madharasan.com/live/toc.html). You 
 * A MySQL database.
 * A PHP library to access and retrieve information.
 * Unlike other online Tamil Bibles, poems and quotations are displayed as they are in the print edition (that is they are formatted like poems and not like paragraphs).
-* Options to enable [Red letter version](https://en.wikipedia.org/wiki/Red_letter_edition) of the bible is added. The logic to highlight red letter verses is in the code and not in the database.
+* Options to enable [Red letter version](https://en.wikipedia.org/wiki/Red_letter_edition) of the bible is added. The logic to highlight red letter verses is in the code and not in the database (see [redletter.php](BibleLib/lib/bibleLib/redletter.php)).
  
 ## Requirements
 * PHP 5.4+ and PDO extension (Installed by default)

@@ -530,4 +530,5 @@ INSERT INTO `t_redletter` (`id_from`, `id_to`, `inst`) VALUES
 (53010013, NULL, ''),
 (53010015, NULL, ''),
 (53018009, 53018010, ''),
-(53023011, NULL, '');
+(53023011, NULL, ''),
+(49016016, NULL, '2');

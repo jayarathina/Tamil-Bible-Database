@@ -11,7 +11,7 @@ CREATE TABLE `t_bookkey` (
   `tn_f` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'Tamil Name Full',
   `tn_s` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'Tamil Name Short',
   `tn_a` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'Tamil Name Abbreviation',
-  `tn_o` text COLLATE utf8_unicode_ci COMMENT 'Tamil Name Old',
+  `tn_o` text COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Tamil Name Old',
   `intro` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'Book Introduction'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

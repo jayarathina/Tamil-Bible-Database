@@ -7,7 +7,7 @@
 
 CREATE TABLE `t_crossref` (
   `id_from` int(8) UNSIGNED ZEROFILL NOT NULL,
-  `id_to` int(8) UNSIGNED ZEROFILL NOT NULL DEFAULT 00000000,
+  `id_to` int(8) UNSIGNED ZEROFILL NOT NULL DEFAULT '00000000',
   `note` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='cross reference';
 

@@ -28,7 +28,7 @@ A live demo is available [here](http://bible.madharasan.com/live/toc.html). You 
 * Please read the comments in the code defore customizing.
 
 ### Verse ID System
-After a long analysis, I decided to use verse ID system of  [scrollmapper/bible_databases](https://github.com/scrollmapper/bible_databases). It is simpler and more effecient. Each verse is accessed by a unique key, the combination of the BOOK+CHAPTER+VERSE id.
+After a long analysis, I decided to use verse ID system of  [scrollmapper/bible_databases](https://github.com/scrollmapper/bible_databases#verse-id-system). It is simpler and more effecient. Each verse is accessed by a unique key, the combination of the BOOK+CHAPTER+VERSE id.
 Example: 
 * Genesis 1:1 (Genesis chapter 1, verse 1) = 01001001 (01 001 001)
 * Exodus 2:3 (Exodus chapter 2, verse 3) = 02002003 (02 002 003)

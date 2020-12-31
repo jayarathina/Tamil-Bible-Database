@@ -23,13 +23,8 @@ function getAllBookDetail($bkNo = NULL) {
 		$bks [43] ['StartChapter'] = 0; // சீராக்கின் ஞானம்
 		$bks [43] ['totalChapters'] = 51; // சீராக்கின் ஞானம்
 	} else {
-		if ($bkNo == 44) {
-			$bks [0] ['StartChapter'] = 0; // சீராக்கின் ஞானம்
-			$bks [0] ['totalChapters'] = 51; // சீராக்கின் ஞானம்
-		} else {
-			$bks [0] ['StartChapter'] = 1;
-			$bks [0] ['totalChapters'] = intval ( $bks [0] ['totalChapters'] );
-		}
+	    $bks[0]['StartChapter'] = intval ($bkNo !== 44);
+	    $bks[0]['totalChapters'] = intval($bks[0]['totalChapters']);
 		$bks = $bks [0];
 	}
 	

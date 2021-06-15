@@ -22,7 +22,7 @@ INSERT INTO `mybibleview_dyn` ( (select `t_verses`.`id` AS `verse_id`,`t_verses`
 
 ## Note:
 
-In this case your correctiong to tables like t_verses and t_verseheaders will not reflect in the front end unless you truncate the table mybibleview_dyn and repopulate it.
+In this case, tables like `t_verses` and `t_verseheaders` will not reflect in the front end. To do so, you have to truncate `mybibleview_dyn` and repopulate it:
 
 ```MySQL
 truncate `mybibleview_dyn`;

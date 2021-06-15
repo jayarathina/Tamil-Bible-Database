@@ -24,6 +24,8 @@ A live demo is available [here](http://bible.madharasan.com/live/toc.html). You 
   * `t_crossref.sql` and `t_footnotes` - Contains cross-ref and footnotes of the bible
   * `t_errors.sql` - Contains list of known typographical errors. This list can be found [ here](http://jayarathina.github.io/Tamil-Bible-Database/web/doc6.html)
   * `mybibleview_dyn` - Contains view definition for merging all the above table in production so that it will be faster to process and retrive information
+	* Please note that if your server does not allow you to create views, then follow the instructions at [noviews.md](noviews.md)
+  
 * Unicode characters like ❮, ⁾, ₎, ␢, ⦃ and many others are used in the verses stored in the database to enable us to format the verses properly. The complete list can be found in [bibleConfig.php](BibleLib/lib/bibleLib/bibleConfig.php)
 * Please read the comments in the code defore customizing.
 

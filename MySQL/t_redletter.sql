@@ -8,7 +8,7 @@
 CREATE TABLE `t_redletter` (
   `id_from` int(8) NOT NULL,
   `id_to` int(8) DEFAULT NULL,
-  `inst` varchar(3) COLLATE utf8_unicode_ci NOT NULL
+  `inst` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
